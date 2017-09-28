@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
+import android.widget.Button;
 
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -23,6 +24,45 @@ public class Home extends AppCompatActivity
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //Set Click Event Listeners
+        //Buttons will send users to the appropriate pages
+        Button btnGuide=(Button)findViewById(R.id.btnGuide);
+        Button btnSearch=(Button)findViewById(R.id.btnSearch);
+        Button btnEvents=(Button)findViewById(R.id.btnEvents);
+        Button btnUser=(Button)findViewById(R.id.btnUser);
+
+        //Send user to Guide page
+        btnGuide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Home.this, Guide.class));
+            }
+        });
+
+        //Send user to Mountain Search page
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Home.this, MountainSearch.class));
+            }
+        });
+
+        //Send user to Events page
+        btnEvents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Home.this, event.class));
+            }
+        });
+
+        //Send user to User page
+        btnUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Home.this, User.class));
+            }
+        });
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -60,10 +100,6 @@ public class Home extends AppCompatActivity
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.home, menu);
         return true;
-    }
-
-    public void onClick(View v) {
-        startActivity(new Intent(Home.this, Guide.class));
     }
 
     @Override
