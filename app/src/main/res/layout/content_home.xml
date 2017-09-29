@@ -21,6 +21,8 @@
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
         android:layout_marginTop="10dp"
+        android:background="#994d00"
+        android:textColor="#fff"
         app:layout_constraintTop_toBottomOf="@+id/btnUser" />
 
     <Button
@@ -36,6 +38,8 @@
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1"
         android:layout_marginTop="10dp"
+        android:background="#994d00"
+        android:textColor="#fff"
         app:layout_constraintTop_toBottomOf="@+id/btnSearch" />
 
     <Button
@@ -53,6 +57,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintHorizontal_bias="0.483"
         android:layout_marginTop="10dp"
+        android:background="#994d00"
+        android:textColor="#fff"
         app:layout_constraintTop_toBottomOf="@+id/btnGuide" />
 
     <Button
@@ -67,17 +73,19 @@
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1"
         android:layout_marginTop="106dp"
+        android:background="#994d00"
+        android:textColor="#fff"
         app:layout_constraintTop_toTopOf="@+id/txtHeader" />
 
     <EditText
         android:id="@+id/txtHeader"
-        style="@android:style/Widget.DeviceDefault.EditText"
         android:layout_width="280dp"
         android:layout_height="96dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="36dp"
         android:ems="10"
+        android:textColor="#fff"
         android:selectAllOnFocus="false"
         android:singleLine="false"
         android:text="Hiking Helper"
