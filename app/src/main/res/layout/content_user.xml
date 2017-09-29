@@ -6,6 +6,55 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.hikinghelper.cody.hikinghelper.User"
-    tools:showIn="@layout/user">
+    tools:showIn="@layout/user"
+    android:background="#00cc66">
+
+    <EditText
+        android:id="@+id/txtName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        tools:layout_editor_absoluteX="72dp"
+        tools:layout_editor_absoluteY="181dp" />
+
+    <EditText
+        android:id="@+id/txtAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Age"
+        tools:layout_editor_absoluteX="72dp"
+        tools:layout_editor_absoluteY="242dp" />
+
+    <EditText
+        android:id="@+id/txtExp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Experience"
+        tools:layout_editor_absoluteX="72dp"
+        tools:layout_editor_absoluteY="308dp" />
+
+    <EditText
+        android:id="@+id/txtAbout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:text="About Me"
+        tools:layout_editor_absoluteX="72dp"
+        tools:layout_editor_absoluteY="370dp" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="173dp"
+        android:layout_height="137dp"
+        app:srcCompat="@mipmap/ic_launcher"
+        tools:layout_editor_absoluteX="94dp"
+        tools:layout_editor_absoluteY="25dp" />
 
 </android.support.constraint.ConstraintLayout>
