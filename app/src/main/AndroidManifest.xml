@@ -37,6 +37,10 @@
         <activity
             android:name=".Pictures"
             android:label="@string/title_activity_pictures"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".createEvent"
+            android:label="@string/title_activity_create_event"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
