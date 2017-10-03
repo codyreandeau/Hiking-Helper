@@ -12,4 +12,5 @@
     <string name="title_activity_pictures">Pictures</string>
     <string name="title_activity_create_event">create_event</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_login">login</string>
 </resources>
