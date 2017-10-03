@@ -31,6 +31,15 @@ public class Home extends AppCompatActivity
         Button btnSearch=(Button)findViewById(R.id.btnSearch);
         Button btnEvents=(Button)findViewById(R.id.btnEvents);
         Button btnUser=(Button)findViewById(R.id.btnUser);
+        Button btnLogin=(Button)findViewById(R.id.btnLogin);
+
+        //Send user to Login page
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Home.this, login.class));
+            }
+        });
 
         //Send user to Guide page
         btnGuide.setOnClickListener(new View.OnClickListener() {
