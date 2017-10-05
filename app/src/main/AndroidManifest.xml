@@ -45,6 +45,10 @@
         <activity
             android:name=".login"
             android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".create_new_user"
+            android:label="@string/title_activity_create_new_user"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
