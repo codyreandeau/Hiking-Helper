@@ -9,4 +9,16 @@
     tools:showIn="@layout/guide"
     android:background="#00cc66">
 
+    <TextView
+        android:id="@+id/txtGuide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guide"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 </android.support.constraint.ConstraintLayout>
