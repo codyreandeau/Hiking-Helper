@@ -18,6 +18,9 @@ public class event extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //set action bar text
+        getSupportActionBar().setTitle("Events");
+
         //Set click event listener
         //button to send user to appropriate page
         Button btnGuide=(Button)findViewById(R.id.btnCreate);
