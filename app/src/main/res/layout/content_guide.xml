@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,7 +9,7 @@
     tools:showIn="@layout/guide"
     android:background="#00cc66">
 
-    <android.support.constraint.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -17,43 +17,43 @@
             android:id="@+id/lblGuide"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="29dp"
+            android:layout_marginTop="34dp"
             android:text="Guide"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
 
         <TextView
             android:id="@+id/txtText"
             android:layout_width="315dp"
             android:layout_height="217dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
-            android:text="It always wise to make sure that you bring enough water and food for your hike. If the hike is more than three hours long, you should think about bringing at least 32 ounces of water with you, as well as plenty of snacks. You do not want to find yourself dehydrated and hungry in the middle of a 4 hour hike, trust me."
+            android:text="It always wise to make sure that you bring enough water and food for your hike. If the hike is more than three hours long, you should think about bringing at least 32 ounces of water with you, as well as plenty of snacks. You do not want to find yourself dehydrated and hungry in the middle of a 4 hour hike, trust me. A situation like this could cause you to pass out."
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintHorizontal_bias="0.517"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+            app:layout_constraintTop_toBottomOf="@+id/imgTest"
+            android:layout_below="@+id/imgTest"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/imgTest"
             android:layout_width="190dp"
             android:layout_height="190dp"
             android:src="?android:attr/alertDialogIcon"
-            android:layout_marginRight="8dp"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginLeft="8dp"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="19dp"
             app:layout_constraintTop_toBottomOf="@+id/lblGuide"
             app:layout_constraintHorizontal_bias="0.502"
-            tools:layout_editor_absoluteX="71dp" />
+            tools:layout_editor_absoluteX="71dp"
+            android:layout_below="@+id/lblGuide"
+            android:layout_centerHorizontal="true" />
 
-    </android.support.constraint.ConstraintLayout>
-</ScrollView>
+    </RelativeLayout>
+</android.support.v4.widget.NestedScrollView>
