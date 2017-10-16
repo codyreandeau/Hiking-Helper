@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 
 public class editUserInfo extends AppCompatActivity {
 
@@ -16,6 +17,16 @@ public class editUserInfo extends AppCompatActivity {
         setContentView(R.layout.activity_edit_user_info);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Button btnUpdate=(Button)findViewById(R.id.btnUpdate);
+
+        //Send user to back to user page after update
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(editUserInfo.this, User.class));
+            }
+        });
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
