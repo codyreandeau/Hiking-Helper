@@ -28,6 +28,9 @@ public class editUserInfo extends AppCompatActivity {
             }
         });
 
+        //set action bar text
+        getSupportActionBar().setTitle("Edit Your Information");
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
