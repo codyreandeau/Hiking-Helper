@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Home"
+            android:name=".login"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -45,8 +45,8 @@
             android:label="@string/title_activity_create_event"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".login"
-            android:label="@string/title_activity_login"
+            android:name=".Home"
+            android:label="Home"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".create_new_user"
