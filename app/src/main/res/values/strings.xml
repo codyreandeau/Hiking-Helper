@@ -15,4 +15,5 @@
     <string name="title_activity_login">login</string>
     <string name="title_activity_create_new_user">create_new_user</string>
     <string name="title_activity_edit_user_info">editUserInfo</string>
+    <string name="title_activity_test_fetch">test_fetch</string>
 </resources>

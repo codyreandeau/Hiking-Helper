@@ -20,7 +20,8 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_create_new_user" />
+    <include layout="@layout/content_create_new_user"
+        android:layout_width="74dp" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

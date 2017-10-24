@@ -79,7 +79,6 @@ public class login extends AppCompatActivity {
                         HashMap<String,String> hashMap = new HashMap<String, String>();
                         hashMap.put("username",username.getText().toString());
                         hashMap.put("password",password.getText().toString());
-
                         return hashMap;
                     }
                 };

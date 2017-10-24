@@ -8,8 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class User extends AppCompatActivity {
+
+    TextView firstName, age, experience, aboutMe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +20,18 @@ public class User extends AppCompatActivity {
         setContentView(R.layout.user);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        firstName = (TextView) findViewById(R.id.txtName);
+        age = (TextView) findViewById(R.id.txtAge);
+        experience = (TextView) findViewById(R.id.txtExp);
+        aboutMe = (TextView) findViewById(R.id.txtAbout);
+
+
+        firstName.setText(getIntent().getStringExtra("FIRST_NAME"));
+        age.setText(getIntent().getStringExtra("AGE"));
+        experience.setText(getIntent().getStringExtra("EXP"));
+        aboutMe.setText(getIntent().getStringExtra("ABOUT"));
+
 
         //set action bar text
         getSupportActionBar().setTitle("Your Profile");
@@ -27,7 +42,14 @@ public class User extends AppCompatActivity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(User.this, editUserInfo.class));
+
+                Intent intent = new Intent(User.this, editUserInfo.class);
+                intent.putExtra("FIRST_NAME", firstName.getText().toString());
+                intent.putExtra("AGE", age.getText().toString());
+                intent.putExtra("EXP", experience.getText().toString());
+                intent.putExtra("ABOUT", aboutMe.getText().toString());
+                startActivity(intent);
+
             }
         });
 

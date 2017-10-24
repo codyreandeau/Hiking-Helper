@@ -8,8 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class editUserInfo extends AppCompatActivity {
+
+    EditText firstName, age, experience, aboutMe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,13 +22,37 @@ public class editUserInfo extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        firstName = (EditText) findViewById(R.id.txtName);
+        age = (EditText) findViewById(R.id.txtAge);
+        experience = (EditText) findViewById(R.id.txtExp);
+        aboutMe = (EditText) findViewById(R.id.txtAbout);
+
+        firstName.setText(getIntent().getStringExtra("FIRST_NAME"));
+        age.setText(getIntent().getStringExtra("AGE"));
+        experience.setText(getIntent().getStringExtra("EXP"));
+        aboutMe.setText(getIntent().getStringExtra("ABOUT"));
+
+        if(experience.equals("EXPERIENCE")){
+            experience.setText("");
+        }
+
+        if(aboutMe.equals("About Me")){
+            aboutMe.setText("");
+        }
+
         Button btnUpdate=(Button)findViewById(R.id.btnUpdate);
 
         //Send user to back to user page after update
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(editUserInfo.this, User.class));
+
+                Intent intent = new Intent(editUserInfo.this, User.class);
+                intent.putExtra("FIRST_NAME", firstName.getText().toString());
+                intent.putExtra("AGE", age.getText().toString());
+                intent.putExtra("EXP", experience.getText().toString());
+                intent.putExtra("ABOUT", aboutMe.getText().toString());
+                startActivity(intent);
             }
         });
 

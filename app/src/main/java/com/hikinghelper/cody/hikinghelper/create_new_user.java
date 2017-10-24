@@ -27,11 +27,12 @@ import java.util.Map;
 
 public class create_new_user extends AppCompatActivity {
 
-    private EditText username, password, email;
+    private EditText username, password, email, first_name, last_name, age;
     private Button register;
     private RequestQueue requestQueue;
     private static final String URL = "https://hikinghelper.000webhostapp.com/connect/user_register.php";
     private StringRequest request;
+    public static final int REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,9 @@ public class create_new_user extends AppCompatActivity {
         username = (EditText) findViewById(R.id.txtUsername);
         password = (EditText) findViewById(R.id.txtPassword);
         email = (EditText) findViewById(R.id.txtEmail);
+        first_name = (EditText) findViewById(R.id.txtFirstName);
+        last_name = (EditText) findViewById(R.id.txtLastName);
+        age = (EditText) findViewById(R.id.txtAge);
         register = (Button) findViewById(R.id.btnCreate);
 
         requestQueue = Volley.newRequestQueue(this);
@@ -58,7 +62,14 @@ public class create_new_user extends AppCompatActivity {
                             JSONObject jsonObject = new JSONObject(response);
                             if(jsonObject.names().get(0).equals("success")){
                                 Toast.makeText(getApplicationContext(),"SUCCESS "+jsonObject.getString("success"),Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(),Home.class));
+
+                                String first_name_value = first_name.getText().toString();
+                                String age_value = age.getText().toString();
+                                Intent intent = new Intent(getApplicationContext(),User.class);
+                                intent.putExtra("FIRST_NAME", first_name_value);
+                                intent.putExtra("AGE", age_value);
+                                startActivityForResult(intent, REQUEST_CODE);
+
                             }else {
                                 Toast.makeText(getApplicationContext(), "Error" +jsonObject.getString("error"), Toast.LENGTH_SHORT).show();
                             }
@@ -79,6 +90,9 @@ public class create_new_user extends AppCompatActivity {
                         hashMap.put("username",username.getText().toString());
                         hashMap.put("password",password.getText().toString());
                         hashMap.put("email",email.getText().toString());
+                        hashMap.put("first_name",first_name.getText().toString());
+                        hashMap.put("last_name",last_name.getText().toString());
+                        hashMap.put("age",age.getText().toString());
 
                         return hashMap;
                     }

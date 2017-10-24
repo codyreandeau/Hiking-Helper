@@ -55,7 +55,7 @@
         <activity
             android:name=".editUserInfo"
             android:label="@string/title_activity_edit_user_info"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
