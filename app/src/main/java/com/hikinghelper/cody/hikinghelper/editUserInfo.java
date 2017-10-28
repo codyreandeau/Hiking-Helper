@@ -1,6 +1,7 @@
 package com.hikinghelper.cody.hikinghelper;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -17,7 +18,7 @@ import android.widget.TextView;
 public class editUserInfo extends AppCompatActivity {
 
     EditText firstName, age, experience, aboutMe;
-    ImageView imageView3;
+    ImageView image;
     Button button;
     private static final int PICK_IMAGE = 100;
     Uri imageUri;
@@ -33,6 +34,7 @@ public class editUserInfo extends AppCompatActivity {
         age = (EditText) findViewById(R.id.txtAge);
         experience = (EditText) findViewById(R.id.txtExp);
         aboutMe = (EditText) findViewById(R.id.txtAbout);
+        image = (ImageView) findViewById(R.id.imageView3);
 
         firstName.setText(getIntent().getStringExtra("FIRST_NAME"));
         age.setText(getIntent().getStringExtra("AGE"));
@@ -47,6 +49,12 @@ public class editUserInfo extends AppCompatActivity {
             aboutMe.setText("");
         }
 
+        Bundle extras = getIntent().getExtras();
+        if(extras != null) {
+            Bitmap bmp = extras.getParcelable("imagebitmap");
+            image.setImageBitmap(bmp);
+        }
+
         Button btnUpdate=(Button)findViewById(R.id.btnUpdate);
 
         //Send user to back to user page after update
@@ -54,11 +62,20 @@ public class editUserInfo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                //Pass data to user profile page
                 Intent intent = new Intent(editUserInfo.this, User.class);
                 intent.putExtra("FIRST_NAME", firstName.getText().toString());
                 intent.putExtra("AGE", age.getText().toString());
                 intent.putExtra("EXP", experience.getText().toString());
                 intent.putExtra("ABOUT", aboutMe.getText().toString());
+
+                //Pass image to user profile page
+                image.buildDrawingCache();
+                Bitmap image2 = image.getDrawingCache();
+                Bundle extras = new Bundle();
+                extras.putParcelable("imagebitmap", image2);
+                intent.putExtras(extras);
+
                 startActivity(intent);
             }
         });
@@ -75,7 +92,7 @@ public class editUserInfo extends AppCompatActivity {
         });
 
 
-        imageView3 = (ImageView)findViewById(R.id.imageView3);
+        image = (ImageView)findViewById(R.id.imageView3);
         button = (Button)findViewById(R.id.button);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +111,7 @@ public class editUserInfo extends AppCompatActivity {
         super.onActivityResult(requestCode,resultCode,data);
         if (requestCode == PICK_IMAGE){//requestCode == RESULT_OK && should be here but then it gives me an always false error
             imageUri=data.getData();
-            imageView3.setImageURI(imageUri);
+            image.setImageURI(imageUri);
 
         }
 
