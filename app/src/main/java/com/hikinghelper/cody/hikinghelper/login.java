@@ -50,42 +50,54 @@ public class login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            if(jsonObject.names().get(0).equals("success")){
-                                Toast.makeText(getApplicationContext(),"SUCCESS "+jsonObject.getString("success"),Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(),Home.class));
-                            }else {
-                                Toast.makeText(getApplicationContext(), "Error" +jsonObject.getString("error"), Toast.LENGTH_SHORT).show();
+                String strUserName = username.getText().toString();
+                String strPassword = password.getText().toString();
+                if (strPassword.trim().equals("") && strUserName.trim().equals("")) {
+                    Toast.makeText(getApplicationContext(), "Please fill out both fields", Toast.LENGTH_SHORT).show();
+                }else if(strUserName.trim().equals("")){
+                    Toast.makeText(getApplicationContext(), "Please fill out the username field", Toast.LENGTH_SHORT).show();
+                }else if(strPassword.trim().equals("")){
+                    Toast.makeText(getApplicationContext(), "Please fill out the password field", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject jsonObject = new JSONObject(response);
+                                if (jsonObject.names().get(0).equals("success")) {
+                                    Toast.makeText(getApplicationContext(), "SUCCESS " + jsonObject.getString("success"), Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(getApplicationContext(), Home.class));
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "Error" + jsonObject.getString("error"), Toast.LENGTH_SHORT).show();
+                                }
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+
                         }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            // System.out.println(error.getMessage());
+                        }
+                    }) {
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            HashMap<String, String> hashMap = new HashMap<String, String>();
+                            hashMap.put("username", username.getText().toString());
+                            hashMap.put("password", password.getText().toString());
+                            return hashMap;
+                        }
+                    };
 
-
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                       // System.out.println(error.getMessage());
-                    }
-                }){
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        HashMap<String,String> hashMap = new HashMap<String, String>();
-                        hashMap.put("username",username.getText().toString());
-                        hashMap.put("password",password.getText().toString());
-                        return hashMap;
-                    }
-                };
-
-                requestQueue.add(request);
+                    requestQueue.add(request);
+                }
             }
         });
+
 
         //set action bar text
         getSupportActionBar().setTitle("Login");
