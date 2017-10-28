@@ -28,7 +28,7 @@ public class User extends AppCompatActivity {
         age = (TextView) findViewById(R.id.txtAge);
         experience = (TextView) findViewById(R.id.txtExp);
         aboutMe = (TextView) findViewById(R.id.txtAbout);
-        image = (ImageView) findViewById(R.id.imageView2);
+        image = (ImageView) findViewById(R.id.imageView4);
 
 
         firstName.setText(getIntent().getStringExtra("FIRST_NAME"));
