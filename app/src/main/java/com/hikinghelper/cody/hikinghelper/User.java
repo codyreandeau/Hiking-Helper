@@ -30,12 +30,13 @@ public class User extends AppCompatActivity {
         aboutMe = (TextView) findViewById(R.id.txtAbout);
         image = (ImageView) findViewById(R.id.imageView4);
 
-
+        //Get data from the create new user page
         firstName.setText(getIntent().getStringExtra("FIRST_NAME"));
         age.setText(getIntent().getStringExtra("AGE"));
         experience.setText(getIntent().getStringExtra("EXP"));
         aboutMe.setText(getIntent().getStringExtra("ABOUT"));
 
+        //get image from edit user info page, if any
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
             Bitmap bmp = extras.getParcelable("imagebitmap");
@@ -52,12 +53,14 @@ public class User extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                //for sending data to the edit user info activity
                 Intent intent = new Intent(User.this, editUserInfo.class);
                 intent.putExtra("FIRST_NAME", firstName.getText().toString());
                 intent.putExtra("AGE", age.getText().toString());
                 intent.putExtra("EXP", experience.getText().toString());
                 intent.putExtra("ABOUT", aboutMe.getText().toString());
 
+                //send image over to the edit user info activity as well
                 if (image != null) {
                     image.buildDrawingCache();
                     Bitmap image2 = image.getDrawingCache();
@@ -70,6 +73,7 @@ public class User extends AppCompatActivity {
             }
         });
 
+        //send user back to the home page
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

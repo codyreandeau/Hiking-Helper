@@ -55,6 +55,7 @@ public class create_new_user extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                //Check if any of the text fields are empty
                 if (isEmptyField(username)) return;
                 else if (isEmptyField(password)) return;
                 else if (isEmptyField(email)) return;
@@ -63,6 +64,7 @@ public class create_new_user extends AppCompatActivity {
                 else if (isEmptyField(age)) return;
                 else {
 
+                    //Add user to the database
                     request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -71,6 +73,7 @@ public class create_new_user extends AppCompatActivity {
                                 if (jsonObject.names().get(0).equals("success")) {
                                     Toast.makeText(getApplicationContext(), "SUCCESS " + jsonObject.getString("success"), Toast.LENGTH_SHORT).show();
 
+                                    //For sending data to the user activity
                                     String first_name_value = first_name.getText().toString();
                                     String age_value = age.getText().toString();
                                     Intent intent = new Intent(getApplicationContext(), User.class);
@@ -114,6 +117,7 @@ public class create_new_user extends AppCompatActivity {
         //set action bar text
         getSupportActionBar().setTitle("Create New User");
 
+        //Send user back to the login page
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

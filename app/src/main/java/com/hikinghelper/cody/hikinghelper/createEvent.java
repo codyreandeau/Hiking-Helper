@@ -20,6 +20,7 @@ public class createEvent extends AppCompatActivity {
         //set action bar text
         getSupportActionBar().setTitle("Create an Event");
 
+        //send user back to the event page
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

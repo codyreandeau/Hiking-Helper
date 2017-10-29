@@ -20,6 +20,7 @@ public class MountainSearch extends AppCompatActivity {
         //set action bar text
         getSupportActionBar().setTitle("Mountain Search");
 
+        //Send user back to the home page
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

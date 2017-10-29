@@ -36,6 +36,7 @@ public class editUserInfo extends AppCompatActivity {
         aboutMe = (EditText) findViewById(R.id.txtAbout);
         image = (ImageView) findViewById(R.id.imageView3);
 
+        //get information passed from the User page
         firstName.setText(getIntent().getStringExtra("FIRST_NAME"));
         age.setText(getIntent().getStringExtra("AGE"));
         experience.setText(getIntent().getStringExtra("EXP"));
@@ -49,6 +50,7 @@ public class editUserInfo extends AppCompatActivity {
             aboutMe.setText("");
         }
 
+        //Get image from the user page, if any
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
             Bitmap bmp = extras.getParcelable("imagebitmap");
@@ -83,6 +85,7 @@ public class editUserInfo extends AppCompatActivity {
         //set action bar text
         getSupportActionBar().setTitle("Edit Your Information");
 
+        //Send user back to the User page
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,10 +94,10 @@ public class editUserInfo extends AppCompatActivity {
             }
         });
 
-
         image = (ImageView)findViewById(R.id.imageView3);
         button = (Button)findViewById(R.id.button);
 
+        //Open image gallery for upload
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,23 +105,18 @@ public class editUserInfo extends AppCompatActivity {
             }
         });}
 
-    private void openGallery(){
-        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-        startActivityForResult(gallery, PICK_IMAGE);
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode,resultCode,data);
-        if (requestCode == PICK_IMAGE){//requestCode == RESULT_OK && should be here but then it gives me an always false error
-            imageUri=data.getData();
-            image.setImageURI(imageUri);
-
+        //Open image gallery function
+        private void openGallery(){
+            Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+            startActivityForResult(gallery, PICK_IMAGE);
         }
 
-
+        @Override
+        protected void onActivityResult(int requestCode, int resultCode, Intent data){
+            super.onActivityResult(requestCode,resultCode,data);
+            if (requestCode == PICK_IMAGE){
+                imageUri=data.getData();
+                image.setImageURI(imageUri);
+        }
     }
-
-
-
-
 }

@@ -50,6 +50,7 @@ public class login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                //Check if any fields are left blank
                 String strUserName = username.getText().toString();
                 String strPassword = password.getText().toString();
                 if (strPassword.trim().equals("") && strUserName.trim().equals("")) {
@@ -60,6 +61,7 @@ public class login extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Please fill out the password field", Toast.LENGTH_SHORT).show();
                 } else {
 
+                    //Validate user in the database
                     request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
