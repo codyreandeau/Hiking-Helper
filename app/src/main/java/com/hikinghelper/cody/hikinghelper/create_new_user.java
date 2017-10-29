@@ -55,50 +55,59 @@ public class create_new_user extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            if(jsonObject.names().get(0).equals("success")){
-                                Toast.makeText(getApplicationContext(),"SUCCESS "+jsonObject.getString("success"),Toast.LENGTH_SHORT).show();
+                if (isEmptyField(username)) return;
+                else if (isEmptyField(password)) return;
+                else if (isEmptyField(email)) return;
+                else if (isEmptyField(first_name)) return;
+                else if (isEmptyField(last_name)) return;
+                else if (isEmptyField(age)) return;
+                else {
 
-                                String first_name_value = first_name.getText().toString();
-                                String age_value = age.getText().toString();
-                                Intent intent = new Intent(getApplicationContext(),User.class);
-                                intent.putExtra("FIRST_NAME", first_name_value);
-                                intent.putExtra("AGE", age_value);
-                                startActivityForResult(intent, REQUEST_CODE);
+                    request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject jsonObject = new JSONObject(response);
+                                if (jsonObject.names().get(0).equals("success")) {
+                                    Toast.makeText(getApplicationContext(), "SUCCESS " + jsonObject.getString("success"), Toast.LENGTH_SHORT).show();
 
-                            }else {
-                                Toast.makeText(getApplicationContext(), "Error" +jsonObject.getString("error"), Toast.LENGTH_SHORT).show();
+                                    String first_name_value = first_name.getText().toString();
+                                    String age_value = age.getText().toString();
+                                    Intent intent = new Intent(getApplicationContext(), User.class);
+                                    intent.putExtra("FIRST_NAME", first_name_value);
+                                    intent.putExtra("AGE", age_value);
+                                    startActivityForResult(intent, REQUEST_CODE);
+
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "Error" + jsonObject.getString("error"), Toast.LENGTH_SHORT).show();
+                                }
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
                         }
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // System.out.println(error.getMessage());
-                    }
-                }){
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        HashMap<String,String> hashMap = new HashMap<String, String>();
-                        hashMap.put("username",username.getText().toString());
-                        hashMap.put("password",password.getText().toString());
-                        hashMap.put("email",email.getText().toString());
-                        hashMap.put("first_name",first_name.getText().toString());
-                        hashMap.put("last_name",last_name.getText().toString());
-                        hashMap.put("age",age.getText().toString());
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            // System.out.println(error.getMessage());
+                        }
+                    }) {
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            HashMap<String, String> hashMap = new HashMap<String, String>();
+                            hashMap.put("username", username.getText().toString());
+                            hashMap.put("password", password.getText().toString());
+                            hashMap.put("email", email.getText().toString());
+                            hashMap.put("first_name", first_name.getText().toString());
+                            hashMap.put("last_name", last_name.getText().toString());
+                            hashMap.put("age", age.getText().toString());
 
-                        return hashMap;
-                    }
-                };
+                            return hashMap;
+                        }
+                    };
 
-                requestQueue.add(request);
+                    requestQueue.add(request);
+                }
             }
         });
 
@@ -113,5 +122,14 @@ public class create_new_user extends AppCompatActivity {
             }
         });
     }
+
+
+    private boolean isEmptyField (EditText editText){
+        boolean result = editText.getText().toString().length() <= 0;
+        if (result)
+            Toast.makeText(getApplicationContext(), "Please fill out all fields!", Toast.LENGTH_SHORT).show();
+        return result;
+    }
+
 
 }
