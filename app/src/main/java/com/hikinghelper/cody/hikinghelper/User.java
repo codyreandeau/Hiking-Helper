@@ -2,7 +2,9 @@ package com.hikinghelper.cody.hikinghelper;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -30,7 +32,13 @@ public class User extends AppCompatActivity {
         aboutMe = (TextView) findViewById(R.id.txtAbout);
         image = (ImageView) findViewById(R.id.imageView4);
 
-        //Get data from the create new user page
+        SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = mPreferences.edit();
+
+        //String name = mPreferences.getString(getString(R.string.first_name), "");
+        //firstName.setText(name);
+
+        //Get passed data from the create new user page
         firstName.setText(getIntent().getStringExtra("FIRST_NAME"));
         age.setText(getIntent().getStringExtra("AGE"));
         experience.setText(getIntent().getStringExtra("EXP"));

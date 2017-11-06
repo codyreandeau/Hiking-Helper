@@ -134,6 +134,4 @@ public class create_new_user extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Please fill out all fields!", Toast.LENGTH_SHORT).show();
         return result;
     }
-
-
 }

@@ -1,13 +1,15 @@
 package com.hikinghelper.cody.hikinghelper;
 
+import android.support.v7.app.AppCompatActivity;
+
 /**
  * Created by Cody on 11/1/2017.
  */
 
-public class userData {
+public class userData extends AppCompatActivity {
 
     private String name;
-    private int age;
+    private String age;
     private String experience;
     private String aboutMe;
 
@@ -15,7 +17,7 @@ public class userData {
         this.name = name;
     }
 
-    public void setAge(int age){
+    public void setAge(String age){
         this.age = age;
     }
 
@@ -28,18 +30,18 @@ public class userData {
     }
 
     public String getName(){
-        return this.name;
+        return name;
     }
 
-    public int getAge(){
-        return this.age;
+    public String getAge(){
+        return age;
     }
 
     public String getExperience(){
-        return this.experience;
+        return experience;
     }
 
     public String getAboutMe(){
-        return this.aboutMe;
+        return aboutMe;
     }
 }

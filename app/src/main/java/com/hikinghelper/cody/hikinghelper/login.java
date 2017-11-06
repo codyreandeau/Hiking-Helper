@@ -2,12 +2,15 @@ package com.hikinghelper.cody.hikinghelper;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
+import android.content.SharedPreferences;
+import android.preference.Preference;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -29,11 +32,14 @@ public class login extends AppCompatActivity {
 
     private EditText username, password;
     private Button sign_in_register;
+    private CheckBox remember;
     private RequestQueue requestQueue;
     private static final String URL = "https://hikinghelper.000webhostapp.com/connect/user_login.php";
     private StringRequest request;
 
-    @Override
+    private SharedPreferences mPreferences;
+    private SharedPreferences.Editor mEditor;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
@@ -43,6 +49,13 @@ public class login extends AppCompatActivity {
         username = (EditText) findViewById(R.id.txtUsername);
         password = (EditText) findViewById(R.id.txtPassword);
         sign_in_register = (Button) findViewById(R.id.btnLoginUser);
+        remember = (CheckBox) findViewById(R.id.checkBox);
+
+        mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        //mPreferences = getSharedPreferences("com.hikinghelper.cody.hikinghelper", Context.MODE_PRIVATE);
+        mEditor = mPreferences.edit();
+
+        checkSharedPreferences();
 
         requestQueue = Volley.newRequestQueue(this);
 
@@ -69,6 +82,34 @@ public class login extends AppCompatActivity {
                                 JSONObject jsonObject = new JSONObject(response);
                                 if (jsonObject.names().get(0).equals("success")) {
                                     Toast.makeText(getApplicationContext(), "SUCCESS " + jsonObject.getString("success"), Toast.LENGTH_SHORT).show();
+
+                                    if(remember.isChecked()){
+                                        //Set checkbox on start up
+                                        mEditor.putString(getString(R.string.checkbox), "True");
+                                        mEditor.commit();
+
+                                        //Save username
+                                        String un = username.getText().toString();
+                                        mEditor.putString(getString(R.string.username), un);
+                                        mEditor.commit();
+
+                                        //Save password
+                                        String ps = password.getText().toString();
+                                        mEditor.putString(getString(R.string.password), ps);
+                                        mEditor.commit();
+                                    }else{
+                                        //Set checkbox on start up
+                                        mEditor.putString(getString(R.string.checkbox), "False");
+                                        mEditor.commit();
+
+                                        //Save username
+                                        mEditor.putString(getString(R.string.username), "");
+                                        mEditor.commit();
+
+                                        //Save password
+                                        mEditor.putString(getString(R.string.password), "");
+                                        mEditor.commit();
+                                    }
                                     startActivity(new Intent(getApplicationContext(), Home.class));
                                 } else {
                                     Toast.makeText(getApplicationContext(), "Error" + jsonObject.getString("error"), Toast.LENGTH_SHORT).show();
@@ -113,6 +154,20 @@ public class login extends AppCompatActivity {
                 startActivity(new Intent(login.this, create_new_user.class));
             }
         });
+    }
 
+    private void checkSharedPreferences() {
+        String checkbox = mPreferences.getString(getString(R.string.checkbox), "False");
+        String name = mPreferences.getString(getString(R.string.username), "");
+        String pass = mPreferences.getString(getString(R.string.password), "");
+
+        username.setText(name);
+        password.setText(pass);
+
+        if(checkbox.equals("True")) {
+            remember.setChecked(true);
+        }else{
+            remember.setChecked(false);
+        }
     }
 }

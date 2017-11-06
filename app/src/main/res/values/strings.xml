@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Hiking Helper</string>
+    <string name="checkbox">com.hikinghelper.cody.hikinghelper.checkbox</string>
+    <string name="username">com.hikinghelper.cody.hikinghelper.name</string>
+    <string name="password">com.hikinghelper.cody.hikinghelper.password</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
