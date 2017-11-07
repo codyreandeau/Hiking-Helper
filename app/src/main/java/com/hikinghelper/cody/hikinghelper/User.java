@@ -35,14 +35,23 @@ public class User extends AppCompatActivity {
         SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = mPreferences.edit();
 
-        //String name = mPreferences.getString(getString(R.string.first_name), "");
-        //firstName.setText(name);
+        String name = mPreferences.getString(getString(R.string.first_name), "");
+        firstName.setText(name);
+
+        String mAge = mPreferences.getString(getString(R.string.age), "");
+        age.setText(mAge);
+
+        String exp = mPreferences.getString(getString(R.string.experience), "");
+        experience.setText(exp);
+
+        String am = mPreferences.getString(getString(R.string.about_me), "");
+        aboutMe.setText(am);
 
         //Get passed data from the create new user page
-        firstName.setText(getIntent().getStringExtra("FIRST_NAME"));
+        /*firstName.setText(getIntent().getStringExtra("FIRST_NAME"));
         age.setText(getIntent().getStringExtra("AGE"));
         experience.setText(getIntent().getStringExtra("EXP"));
-        aboutMe.setText(getIntent().getStringExtra("ABOUT"));
+        aboutMe.setText(getIntent().getStringExtra("ABOUT"));*/
 
         //get image from edit user info page, if any
         Bundle extras = getIntent().getExtras();
@@ -77,7 +86,6 @@ public class User extends AppCompatActivity {
                     intent.putExtras(extras2);
                 }
                 startActivity(intent);
-
             }
         });
 

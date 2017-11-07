@@ -2,7 +2,9 @@ package com.hikinghelper.cody.hikinghelper;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
+import android.content.SharedPreferences;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -34,6 +36,9 @@ public class create_new_user extends AppCompatActivity {
     private StringRequest request;
     public static final int REQUEST_CODE = 1;
 
+    private SharedPreferences mPreferences;
+    private SharedPreferences.Editor mEditor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +53,15 @@ public class create_new_user extends AppCompatActivity {
         last_name = (EditText) findViewById(R.id.txtLastName);
         age = (EditText) findViewById(R.id.txtAge);
         register = (Button) findViewById(R.id.btnCreate);
+
+        mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        //mPreferences = getSharedPreferences("com.hikinghelper.cody.hikinghelper", Context.MODE_PRIVATE);
+        mEditor = mPreferences.edit();
+
+        checkSharedPreferences();
+
+        first_name.setText("");
+        age.setText("");
 
         requestQueue = Volley.newRequestQueue(this);
 
@@ -73,14 +87,17 @@ public class create_new_user extends AppCompatActivity {
                                 if (jsonObject.names().get(0).equals("success")) {
                                     Toast.makeText(getApplicationContext(), "SUCCESS " + jsonObject.getString("success"), Toast.LENGTH_SHORT).show();
 
-                                    //For sending data to the user activity
-                                    String first_name_value = first_name.getText().toString();
-                                    String age_value = age.getText().toString();
-                                    Intent intent = new Intent(getApplicationContext(), User.class);
-                                    intent.putExtra("FIRST_NAME", first_name_value);
-                                    intent.putExtra("AGE", age_value);
-                                    startActivityForResult(intent, REQUEST_CODE);
+                                    //Save first_name
+                                    String fn = first_name.getText().toString();
+                                    mEditor.putString(getString(R.string.first_name), fn);
+                                    mEditor.commit();
 
+                                    //Save age
+                                    String ag = age.getText().toString();
+                                    mEditor.putString(getString(R.string.age), ag);
+                                    mEditor.commit();
+
+                                    startActivity(new Intent(getApplicationContext(), User.class));
                                 } else {
                                     Toast.makeText(getApplicationContext(), "Error" + jsonObject.getString("error"), Toast.LENGTH_SHORT).show();
                                 }
@@ -108,7 +125,6 @@ public class create_new_user extends AppCompatActivity {
                             return hashMap;
                         }
                     };
-
                     requestQueue.add(request);
                 }
             }
@@ -133,5 +149,13 @@ public class create_new_user extends AppCompatActivity {
         if (result)
             Toast.makeText(getApplicationContext(), "Please fill out all fields!", Toast.LENGTH_SHORT).show();
         return result;
+    }
+
+    private void checkSharedPreferences() {
+        String sharedName = mPreferences.getString(getString(R.string.first_name), "");
+        String sharedAge = mPreferences.getString(getString(R.string.age), "");
+
+        first_name.setText(sharedName);
+        age.setText(sharedAge);
     }
 }

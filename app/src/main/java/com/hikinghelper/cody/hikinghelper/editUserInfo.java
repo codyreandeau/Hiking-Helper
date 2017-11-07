@@ -1,9 +1,11 @@
 package com.hikinghelper.cody.hikinghelper;
 
+import android.content.SharedPreferences;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -23,6 +25,9 @@ public class editUserInfo extends AppCompatActivity {
     private static final int PICK_IMAGE = 100;
     Uri imageUri;
 
+    private SharedPreferences mPreferences;
+    private SharedPreferences.Editor mEditor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,13 +41,14 @@ public class editUserInfo extends AppCompatActivity {
         aboutMe = (EditText) findViewById(R.id.txtAbout);
         image = (ImageView) findViewById(R.id.imageView3);
 
+
         //get information passed from the User page
         firstName.setText(getIntent().getStringExtra("FIRST_NAME"));
         age.setText(getIntent().getStringExtra("AGE"));
         experience.setText(getIntent().getStringExtra("EXP"));
         aboutMe.setText(getIntent().getStringExtra("ABOUT"));
 
-        if(experience.equals("EXPERIENCE")){
+        if(experience.equals("Experience")){
             experience.setText("");
         }
 
@@ -57,6 +63,12 @@ public class editUserInfo extends AppCompatActivity {
             image.setImageBitmap(bmp);
         }
 
+        mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        //mPreferences = getSharedPreferences("com.hikinghelper.cody.hikinghelper", Context.MODE_PRIVATE);
+        mEditor = mPreferences.edit();
+
+        checkSharedPreferences();
+
         Button btnUpdate=(Button)findViewById(R.id.btnUpdate);
 
         //Send user to back to user page after update
@@ -66,10 +78,30 @@ public class editUserInfo extends AppCompatActivity {
 
                 //Pass data to user profile page
                 Intent intent = new Intent(editUserInfo.this, User.class);
-                intent.putExtra("FIRST_NAME", firstName.getText().toString());
+                /*intent.putExtra("FIRST_NAME", firstName.getText().toString());
                 intent.putExtra("AGE", age.getText().toString());
                 intent.putExtra("EXP", experience.getText().toString());
-                intent.putExtra("ABOUT", aboutMe.getText().toString());
+                intent.putExtra("ABOUT", aboutMe.getText().toString());*/
+
+                //Save first_name
+                String fn = firstName.getText().toString();
+                mEditor.putString(getString(R.string.first_name), fn);
+                mEditor.commit();
+
+                //Save age
+                String ag = age.getText().toString();
+                mEditor.putString(getString(R.string.age), ag);
+                mEditor.commit();
+
+                //Save experience
+                String ex = experience.getText().toString();
+                mEditor.putString(getString(R.string.experience), ex);
+                mEditor.commit();
+
+                //Save about me
+                String am = aboutMe.getText().toString();
+                mEditor.putString(getString(R.string.about_me), am);
+                mEditor.commit();
 
                 //Pass image to user profile page
                 image.buildDrawingCache();
@@ -118,5 +150,17 @@ public class editUserInfo extends AppCompatActivity {
                 imageUri=data.getData();
                 image.setImageURI(imageUri);
         }
+    }
+
+    private void checkSharedPreferences() {
+        String sharedName = mPreferences.getString(getString(R.string.first_name), "");
+        String sharedAge = mPreferences.getString(getString(R.string.age), "");
+        String sharedExp = mPreferences.getString(getString(R.string.experience), "");
+        String sharedAboutMe = mPreferences.getString(getString(R.string.about_me), "");
+
+        firstName.setText(sharedName);
+        age.setText(sharedAge);
+        experience.setText(sharedExp);
+        aboutMe.setText(sharedAboutMe);
     }
 }
