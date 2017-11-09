@@ -24,6 +24,7 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONArray;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,11 +32,11 @@ import java.util.Map;
 public class MountainSearch extends AppCompatActivity {
 
     private SearchView mountainName;
-    private TextView mountainText, addressText, elevationText, difficultyText, parkingText;
-    String mountain, address, elevation, difficulty, parking;
+    private TextView mountainText, addressText, elevationText, difficultyText, parkingText, distanceText;
+    String mountain, address, elevation, difficulty, parking, distance;
     private Button searchMountain;
     private RequestQueue requestQueue;
-    private static final String URL = "https://hikinghelper.000webhostapp.com/connect/mountains.php";
+    private static final String URL = "https://hikinghelper.000webhostapp.com/connect/mountains_response.php";
     private StringRequest request;
 
     @Override
@@ -47,11 +48,12 @@ public class MountainSearch extends AppCompatActivity {
 
         mountainName = (SearchView) findViewById(R.id.mountainSearch);
         searchMountain = (Button) findViewById(R.id.btnSearchMount);
-        mountainText = (TextView) findViewById(R.id.txtName);
+        mountainText = (TextView) findViewById(R.id.txtMountainName);
         addressText = (TextView) findViewById(R.id.txtAddress);
         elevationText = (TextView) findViewById(R.id.txtElevation);
         difficultyText = (TextView) findViewById(R.id.txtDifficulty);
         parkingText = (TextView) findViewById(R.id.txtParking);
+        distanceText = (TextView) findViewById(R.id.txtDistance);
 
         requestQueue = Volley.newRequestQueue(this);
 
@@ -64,25 +66,24 @@ public class MountainSearch extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            if (jsonObject.names().get(0).equals("success")) {
-                                Toast.makeText(getApplicationContext(), "SUCCESS " + jsonObject.getString("success"), Toast.LENGTH_SHORT).show();
 
-                                mountain = jsonObject.getString("mountainName");
-                                address = jsonObject.getString("address");
-                                elevation = jsonObject.getString("elevation");
-                                difficulty = jsonObject.getString("difficulty");
-                                parking = jsonObject.getString("parking");
+                            JSONObject jsonObject = new JSONObject(response);
+                            JSONArray jsonArray = jsonObject.getJSONArray("Mountains");
+                            JSONObject data = jsonArray.getJSONObject(0);
+
+                                mountain = data.getString("mountainName");
+                                address = data.getString("address");
+                                elevation = data.getString("elevation");
+                                difficulty = data.getString("dificulty");
+                                parking = data.getString("parking");
+                                distance = data.getString("length");
 
                                 mountainText.setText(mountain);
                                 addressText.setText(address);
                                 elevationText.setText(elevation);
                                 difficultyText.setText(difficulty);
                                 parkingText.setText(parking);
-
-                            } else {
-                                Toast.makeText(getApplicationContext(), "Error" + jsonObject.getString("error"), Toast.LENGTH_SHORT).show();
-                            }
+                                distanceText.setText(distance);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -91,7 +92,8 @@ public class MountainSearch extends AppCompatActivity {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // System.out.println(error.getMessage());
+                        Toast.makeText(getApplicationContext(), "Mountain Not Found", Toast.LENGTH_SHORT).show();
+                        error.printStackTrace();
                     }
                 }) {
                     @Override

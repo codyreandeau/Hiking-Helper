@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -26,7 +25,7 @@ public class User extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        firstName = (TextView) findViewById(R.id.txtName);
+        firstName = (TextView) findViewById(R.id.txtMountainName);
         age = (TextView) findViewById(R.id.txtAge);
         experience = (TextView) findViewById(R.id.txtExp);
         aboutMe = (TextView) findViewById(R.id.txtAbout);

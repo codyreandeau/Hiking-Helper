@@ -38,7 +38,7 @@
         app:layout_constraintHorizontal_bias="0.653"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtName" />
+        app:layout_constraintTop_toBottomOf="@+id/txtMountainName" />
 
     <EditText
         android:id="@+id/txtDate"
@@ -71,7 +71,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtTime" />
 
     <EditText
-        android:id="@+id/txtName"
+        android:id="@+id/txtMountainName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"

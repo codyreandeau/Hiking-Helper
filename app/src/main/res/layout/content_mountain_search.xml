@@ -1,174 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.hikinghelper.cody.hikinghelper.MountainSearch"
-    tools:showIn="@layout/mountain_search">
+    tools:showIn="@layout/mountain_search"
+    android:background="#00cc66">
 
-    <TextView
-        android:id="@+id/textView21"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Parking"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="9dp"
-        app:layout_constraintTop_toBottomOf="@+id/txtDifficulty"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.108" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/textView19"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="7dp"
-        android:text="Difficulty"
-        app:layout_constraintHorizontal_bias="0.111"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtElevation" />
+        <TextView
+            android:id="@+id/lblSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mounain Search"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintHorizontal_bias="0.523"
+            android:layout_marginTop="23dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:id="@+id/lblSearch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mounain Search"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.523" />
+        <SearchView
+            android:id="@+id/mountainSearch"
+            android:layout_width="321dp"
+            android:layout_height="63dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblSearch"
+            android:layout_below="@+id/lblSearch"
+            android:layout_alignRight="@+id/lblSearch"
+            android:layout_alignEnd="@+id/lblSearch"
+            android:layout_marginTop="7dp" />
 
-    <SearchView
-        android:id="@+id/mountainSearch"
-        android:layout_width="321dp"
-        android:layout_height="63dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="0dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblSearch" />
+        <Button
+            android:id="@+id/btnSearchMount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mountainSearch"
+            android:layout_above="@+id/txtMountainName"
+            android:layout_centerHorizontal="true" />
 
-    <Button
-        android:id="@+id/btnSearchMount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="9dp"
-        android:text="Search"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mountainSearch" />
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="55dp"
+            android:text="Name:"
+            android:layout_below="@+id/mountainSearch"
+            android:layout_toLeftOf="@+id/btnSearchMount"
+            android:layout_toStartOf="@+id/btnSearchMount" />
 
-    <TextView
-        android:id="@+id/txtName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="7dp"
-        app:layout_constraintHorizontal_bias="0.111"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView24"
+            android:layout_alignStart="@+id/textView24"
+            android:layout_below="@+id/textView24"
+            android:layout_marginTop="15dp"
+            android:text="Address:" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="17dp"
-        android:text="Name"
-        app:layout_constraintHorizontal_bias="0.104"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSearchMount" />
+        <TextView
+            android:id="@+id/textView26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Elevation:"
+            android:layout_below="@+id/textView"
+            android:layout_alignLeft="@+id/textView"
+            android:layout_alignStart="@+id/textView" />
 
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="9dp"
-        android:text="Address"
-        app:layout_constraintHorizontal_bias="0.109"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtName" />
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="Difficulty:"
+            android:layout_below="@+id/textView26"
+            android:layout_alignRight="@+id/textView39"
+            android:layout_alignEnd="@+id/textView39" />
 
-    <TextView
-        android:id="@+id/txtAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintHorizontal_bias="0.104"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+        <TextView
+            android:id="@+id/txtMountainName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="                                    "
+            android:layout_above="@+id/textView"
+            android:layout_toRightOf="@+id/textView"
+            android:layout_toEndOf="@+id/textView" />
 
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="11dp"
-        android:text="Elevation"
-        app:layout_constraintHorizontal_bias="0.111"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtAddress" />
+        <TextView
+            android:id="@+id/txtAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="                                                "
+            android:layout_alignBaseline="@+id/textView"
+            android:layout_alignBottom="@+id/textView"
+            android:layout_toRightOf="@+id/textview321"
+            android:layout_toEndOf="@+id/textview321" />
 
-    <TextView
-        android:id="@+id/txtElevation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintHorizontal_bias="0.111"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+        <TextView
+            android:id="@+id/txtElevation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="                              "
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_above="@+id/textView27"
+            android:layout_toRightOf="@+id/textView26"
+            android:layout_toEndOf="@+id/textView26" />
 
-    <TextView
-        android:id="@+id/txtDifficulty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintHorizontal_bias="0.111"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+        <TextView
+            android:id="@+id/txtDifficulty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView27"
+            android:layout_alignBottom="@+id/textView27"
+            android:layout_alignLeft="@+id/txtParking"
+            android:layout_alignStart="@+id/txtParking"
+            android:text="   " />
 
-    <TextView
-        android:id="@+id/txtParking"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="9dp"
-        app:layout_constraintHorizontal_bias="0.111"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView21" />
+        <TextView
+            android:id="@+id/textView39"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:text="Parking:"
+            android:layout_below="@+id/textView27"
+            android:layout_alignRight="@+id/textView"
+            android:layout_alignEnd="@+id/textView" />
+
+        <TextView
+            android:id="@+id/txtParking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="            "
+            android:layout_above="@+id/textview321"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/textview321"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView26"
+            android:layout_alignStart="@+id/textView26"
+            android:layout_below="@+id/textView39"
+            android:layout_marginTop="17dp"
+            android:text="Distance:" />
+
+        <TextView
+            android:id="@+id/txtDistance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/txtElevation"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/txtElevation"
+            android:text="            " />
+
+    </RelativeLayout>
 
 
-</android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.NestedScrollView>
