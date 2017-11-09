@@ -20,7 +20,7 @@ public class Guide extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Button hike_but =(Button)findViewById(R.id.hike_but);
+     /*   Button hike_but =(Button)findViewById(R.id.hike_but);
         Button pack_but =(Button)findViewById(R.id.pack_but);
         Button wear_but =(Button)findViewById(R.id.wear_but);
         Button tip_but =(Button)findViewById(R.id.tip_but);
@@ -63,7 +63,7 @@ public class Guide extends AppCompatActivity {
             public void onClick(View view) {
                 startActivity(new Intent(Guide.this, Home.class));
             }
-        });
+        });*/
     }
 
 }

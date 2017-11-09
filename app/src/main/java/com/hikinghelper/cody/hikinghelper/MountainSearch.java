@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.SearchView;
 
@@ -30,6 +31,8 @@ import java.util.Map;
 public class MountainSearch extends AppCompatActivity {
 
     private SearchView mountainName;
+    private TextView mountainText, addressText, elevationText, difficultyText, parkingText;
+    String mountain, address, elevation, difficulty, parking;
     private Button searchMountain;
     private RequestQueue requestQueue;
     private static final String URL = "https://hikinghelper.000webhostapp.com/connect/mountains.php";
@@ -44,8 +47,11 @@ public class MountainSearch extends AppCompatActivity {
 
         mountainName = (SearchView) findViewById(R.id.mountainSearch);
         searchMountain = (Button) findViewById(R.id.btnSearchMount);
-
-        requestQueue = Volley.newRequestQueue(this);
+        mountainText = (TextView) findViewById(R.id.txtName);
+        addressText = (TextView) findViewById(R.id.txtAddress);
+        elevationText = (TextView) findViewById(R.id.txtElevation);
+        difficultyText = (TextView) findViewById(R.id.txtDifficulty);
+        parkingText = (TextView) findViewById(R.id.txtParking);
 
         requestQueue = Volley.newRequestQueue(this);
 
@@ -61,6 +67,19 @@ public class MountainSearch extends AppCompatActivity {
                             JSONObject jsonObject = new JSONObject(response);
                             if (jsonObject.names().get(0).equals("success")) {
                                 Toast.makeText(getApplicationContext(), "SUCCESS " + jsonObject.getString("success"), Toast.LENGTH_SHORT).show();
+
+                                mountain = jsonObject.getString("mountainName");
+                                address = jsonObject.getString("address");
+                                elevation = jsonObject.getString("elevation");
+                                difficulty = jsonObject.getString("difficulty");
+                                parking = jsonObject.getString("parking");
+
+                                mountainText.setText(mountain);
+                                addressText.setText(address);
+                                elevationText.setText(elevation);
+                                difficultyText.setText(difficulty);
+                                parkingText.setText(parking);
+
                             } else {
                                 Toast.makeText(getApplicationContext(), "Error" + jsonObject.getString("error"), Toast.LENGTH_SHORT).show();
                             }
@@ -85,7 +104,6 @@ public class MountainSearch extends AppCompatActivity {
                 requestQueue.add(request);
             }
         });
-
 
         //set action bar text
     getSupportActionBar().setTitle("Mountain Search");
