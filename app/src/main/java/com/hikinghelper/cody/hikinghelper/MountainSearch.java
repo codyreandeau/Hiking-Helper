@@ -80,10 +80,10 @@ public class MountainSearch extends AppCompatActivity {
 
                                 mountainText.setText(mountain);
                                 addressText.setText(address);
-                                elevationText.setText(elevation);
+                                elevationText.setText(elevation + "ft.");
                                 difficultyText.setText(difficulty);
                                 parkingText.setText(parking);
-                                distanceText.setText(distance);
+                                distanceText.setText(distance + " miles");
 
                         } catch (JSONException e) {
                             e.printStackTrace();

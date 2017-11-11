@@ -22,6 +22,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -79,9 +80,10 @@ public class login extends AppCompatActivity {
                         @Override
                         public void onResponse(String response) {
                             try {
+
                                 JSONObject jsonObject = new JSONObject(response);
-                                if (jsonObject.names().get(0).equals("success")) {
-                                    Toast.makeText(getApplicationContext(), "SUCCESS " + jsonObject.getString("success"), Toast.LENGTH_SHORT).show();
+                                JSONArray jsonArray = jsonObject.getJSONArray("userInfo");
+                                JSONObject data = jsonArray.getJSONObject(0);
 
                                     if(remember.isChecked()){
                                         //Set checkbox on start up
@@ -110,21 +112,35 @@ public class login extends AppCompatActivity {
                                         mEditor.putString(getString(R.string.password), "");
                                         mEditor.commit();
                                     }
+                                    String fn = data.getString("first_name");
+                                    mEditor.putString(getString(R.string.first_name), fn);
+                                    mEditor.commit();
+
+                                    //Save age
+                                    String ag = data.getString("age");
+                                    mEditor.putString(getString(R.string.age), ag);
+                                    mEditor.commit();
+
+                                    //Save age
+                                    String exp = data.getString("experience");
+                                    mEditor.putString(getString(R.string.experience), exp);
+                                    mEditor.commit();
+
+                                    //Save age
+                                    String am = data.getString("about_me");
+                                    mEditor.putString(getString(R.string.about_me), am);
+                                    mEditor.commit();
+
+                                    Toast.makeText(getApplicationContext(), "Success! Welcome to Hiking Helper!", Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(getApplicationContext(), Home.class));
-                                } else {
-                                    Toast.makeText(getApplicationContext(), "Error" + jsonObject.getString("error"), Toast.LENGTH_SHORT).show();
-                                }
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
-                            }
-
-
-                        }
+                                Toast.makeText(getApplicationContext(), "Sorry. Invalid Login Credentials.", Toast.LENGTH_SHORT).show();
+                            }}
                     }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            // System.out.println(error.getMessage());
                         }
                     }) {
                         @Override
