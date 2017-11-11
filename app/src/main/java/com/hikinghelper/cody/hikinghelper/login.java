@@ -81,12 +81,13 @@ public class login extends AppCompatActivity {
                         public void onResponse(String response) {
                             try {
 
+                                //Get JSON Array userInfo
                                 JSONObject jsonObject = new JSONObject(response);
                                 JSONArray jsonArray = jsonObject.getJSONArray("userInfo");
                                 JSONObject data = jsonArray.getJSONObject(0);
 
+                                //Save or don't save credentials based off of checkbox
                                     if(remember.isChecked()){
-                                        //Set checkbox on start up
                                         mEditor.putString(getString(R.string.checkbox), "True");
                                         mEditor.commit();
 
@@ -100,18 +101,19 @@ public class login extends AppCompatActivity {
                                         mEditor.putString(getString(R.string.password), ps);
                                         mEditor.commit();
                                     }else{
-                                        //Set checkbox on start up
                                         mEditor.putString(getString(R.string.checkbox), "False");
                                         mEditor.commit();
 
-                                        //Save username
+                                        //Save empty string
                                         mEditor.putString(getString(R.string.username), "");
                                         mEditor.commit();
 
-                                        //Save password
+                                        //Save empty string
                                         mEditor.putString(getString(R.string.password), "");
                                         mEditor.commit();
                                     }
+
+                                    //Save first name
                                     String fn = data.getString("first_name");
                                     mEditor.putString(getString(R.string.first_name), fn);
                                     mEditor.commit();
@@ -121,12 +123,12 @@ public class login extends AppCompatActivity {
                                     mEditor.putString(getString(R.string.age), ag);
                                     mEditor.commit();
 
-                                    //Save age
+                                    //Save experience
                                     String exp = data.getString("experience");
                                     mEditor.putString(getString(R.string.experience), exp);
                                     mEditor.commit();
 
-                                    //Save age
+                                    //Save about me
                                     String am = data.getString("about_me");
                                     mEditor.putString(getString(R.string.about_me), am);
                                     mEditor.commit();
