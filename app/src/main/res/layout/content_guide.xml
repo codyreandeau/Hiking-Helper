@@ -9,53 +9,59 @@
     tools:showIn="@layout/guide"
     android:background="#00cc66">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/lblGuide"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
-            android:text="Guide"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-            app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_alignParentTop="true"
-            android:layout_alignRight="@+id/imgTest"
-            android:layout_alignEnd="@+id/imgTest"
-            android:layout_marginRight="30dp"
-            android:layout_marginEnd="30dp" />
+            android:orientation="vertical"
+            android:weightSum="1">
 
-        <TextView
-            android:id="@+id/txtText"
-            android:layout_width="315dp"
-            android:layout_height="217dp"
-            android:layout_below="@+id/imgTest"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="8dp"
-            android:text="It always wise to make sure that you bring enough water and food for your hike. If the hike is more than three hours long, you should think about bringing at least 32 ounces of water with you, as well as plenty of snacks."
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            app:layout_constraintHorizontal_bias="0.517"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgTest" />
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:text="Hiking Guide 101"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:layout_gravity="center"
+                android:gravity="center"/>
 
-        <ImageView
-            android:id="@+id/imgTest"
-            android:layout_width="190dp"
-            android:layout_height="190dp"
-            android:src="@drawable/hiker"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblGuide"
-            app:layout_constraintHorizontal_bias="0.502"
-            tools:layout_editor_absoluteX="71dp"
-            android:layout_below="@+id/lblGuide"
-            android:layout_centerHorizontal="true" />
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/hiker" />
 
-    </RelativeLayout>
+            <Button
+                android:id="@+id/hike_but"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="before_hike" />
+
+            <Button
+                android:id="@+id/pack_but"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="what to pack" />
+
+            <Button
+                android:id="@+id/wear_but"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="what to wear" />
+
+            <Button
+                android:id="@+id/tip_but"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tips and Tricks" />
+
+        </LinearLayout>
+    </ScrollView>
 </android.support.v4.widget.NestedScrollView>
