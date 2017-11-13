@@ -7,15 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-/**
- * Created by Cody on 11/12/2017.
- */
+public class whattopack extends AppCompatActivity {
 
-public class wear_but extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.what_to_wear);
+        setContentView(R.layout.activity_whattopack);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -28,4 +25,5 @@ public class wear_but extends AppCompatActivity {
             }
         });
     }
+
 }

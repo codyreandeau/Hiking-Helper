@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:orientation="vertical" android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+
+        <ImageView
+            android:id="@+id/imageView14"
+            android:layout_width="match_parent"
+            android:layout_height="153dp"
+            android:layout_weight="0.70"
+            app:srcCompat="@drawable/before1" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1. Determine your hiking level- Is this your first time going on a hike? It's good to consider an easy trail for beginner to learn about hiking before taking any risk in harder trail." />
+
+        <ImageView
+            android:id="@+id/imageView13"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            app:srcCompat="@drawable/before2"
+            android:layout_weight="0.68" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2. Going solo or with friends- Hiking in the wild maybe dangerous sometime for solo players if they are not experienced enough. Friends could provide a safe net for the hike, and also a good opportunity to build up friendship." />
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            app:srcCompat="@drawable/before3"
+            android:layout_weight="0.88" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3. Pick your hiking trail- It's important to pick up a trail that fits your level. There are many ways you can do it through website like trails.com or asking any hikers around you, sure they want another partner in their team." />
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="match_parent"
+            android:layout_height="146dp"
+            app:srcCompat="@drawable/before4"
+            android:layout_weight="0.69" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="4. Tell people where you go- Whether you go alone or with a group, let someone at home knows where you go and when you will come back. This is not a hiking game when you can respawn when sh*t happens." />
+
+
+    </LinearLayout>
+</ScrollView>
+</LinearLayout>

@@ -31,28 +31,28 @@ public class Guide extends AppCompatActivity {
         hike_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Guide.this, hike_but.class));
+                startActivity(new Intent(Guide.this, beforehike.class));
             }
         });
         //Send user to what to wear page
         wear_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Guide.this, wear_but.class));
+                startActivity(new Intent(Guide.this, whattowear.class));
             }
         });
         //Send user to what to pack page
         pack_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Guide.this, pack_but.class));
+                startActivity(new Intent(Guide.this, whattopack.class));
             }
         });
         //Send user to tip and trick page
         tip_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Guide.this, tip_but.class));
+                startActivity(new Intent(Guide.this, tipandtrick.class));
             }
         });
 

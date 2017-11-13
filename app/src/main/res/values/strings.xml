@@ -23,4 +23,8 @@
     <string name="title_activity_create_new_user">create_new_user</string>
     <string name="title_activity_edit_user_info">editUserInfo</string>
     <string name="title_activity_test_fetch">test_fetch</string>
+    <string name="title_activity_beforehike">beforehike</string>
+    <string name="title_activity_whattopack">whattopack</string>
+    <string name="title_activity_whattowear">whattowear</string>
+    <string name="title_activity_tipandtrick">tipandtrick</string>
 </resources>

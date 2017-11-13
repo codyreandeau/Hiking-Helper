@@ -56,6 +56,22 @@
             android:name=".editUserInfo"
             android:label="@string/title_activity_edit_user_info"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".beforehike"
+            android:label="@string/title_activity_beforehike"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".whattopack"
+            android:label="@string/title_activity_whattopack"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".whattowear"
+            android:label="@string/title_activity_whattowear"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".tipandtrick"
+            android:label="@string/title_activity_tipandtrick"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
