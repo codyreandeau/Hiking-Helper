@@ -20,7 +20,7 @@
                 android:id="@+id/imageView12"
                 android:layout_width="match_parent"
                 android:layout_height="146dp"
-                app:srcCompat="@drawable/wear1"
+                android:src="@drawable/wear1"
                 android:layout_weight="1.44" />
 
             <TextView
@@ -33,7 +33,7 @@
                 android:id="@+id/imageView13"
                 android:layout_width="379dp"
                 android:layout_height="151dp"
-                app:srcCompat="@drawable/wear2" />
+                android:src="@drawable/wear2" />
 
             <TextView
                 android:id="@+id/textView14"
@@ -45,7 +45,7 @@
                 android:id="@+id/imageView10"
                 android:layout_width="381dp"
                 android:layout_height="135dp"
-                app:srcCompat="@drawable/wear3" />
+                android:src="@drawable/wear3" />
 
             <TextView
                 android:id="@+id/textView11"
@@ -57,7 +57,7 @@
                 android:id="@+id/imageView11"
                 android:layout_width="379dp"
                 android:layout_height="165dp"
-                app:srcCompat="@drawable/wear4" />
+                android:src="@drawable/wear4" />
 
             <TextView
                 android:id="@+id/textView12"
@@ -69,7 +69,7 @@
                 android:id="@+id/imageView8"
                 android:layout_width="381dp"
                 android:layout_height="278dp"
-                app:srcCompat="@drawable/wear5" />
+                android:src="@drawable/wear5" />
 
             <TextView
                 android:id="@+id/textView9"
