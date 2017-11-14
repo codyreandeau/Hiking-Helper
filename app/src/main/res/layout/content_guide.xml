@@ -22,7 +22,7 @@
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="72dp"
                 android:text="Hiking Guide 101"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:layout_gravity="center"
