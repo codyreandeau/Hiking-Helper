@@ -61,15 +61,20 @@ public class MountainSearch extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                //Validate user in the database
-                request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
+                //Check if any fields are left blank
+                String strSearch = mountainName.getQuery().toString();
+                if (strSearch.trim().equals("")) {
+                    Toast.makeText(getApplicationContext(), "Search field is blank.", Toast.LENGTH_SHORT).show();
+                } else {
+                    //Validate user in the database
+                    request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
 
-                            JSONObject jsonObject = new JSONObject(response);
-                            JSONArray jsonArray = jsonObject.getJSONArray("Mountains");
-                            JSONObject data = jsonArray.getJSONObject(0);
+                                JSONObject jsonObject = new JSONObject(response);
+                                JSONArray jsonArray = jsonObject.getJSONArray("Mountains");
+                                JSONObject data = jsonArray.getJSONObject(0);
 
                                 mountain = data.getString("mountainName");
                                 address = data.getString("address");
@@ -85,27 +90,30 @@ public class MountainSearch extends AppCompatActivity {
                                 parkingText.setText(parking);
                                 distanceText.setText(distance + " miles");
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                Toast.makeText(getApplicationContext(), "Mountain Not Found.", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), "Mountain Not Found", Toast.LENGTH_SHORT).show();
-                        error.printStackTrace();
-                    }
-                }) {
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        HashMap<String, String> hashMap = new HashMap<String, String>();
-                        hashMap.put("mountainName", mountainName.getQuery().toString());
-                        return hashMap;
-                    }
-                };
-                requestQueue.add(request);
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(getApplicationContext(), "Mountain Not Found", Toast.LENGTH_SHORT).show();
+                            error.printStackTrace();
+                        }
+                    }) {
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            HashMap<String, String> hashMap = new HashMap<String, String>();
+                            hashMap.put("mountainName", mountainName.getQuery().toString());
+                            return hashMap;
+                        }
+                    };
+                    requestQueue.add(request);
+                }
             }
         });
+
 
         //set action bar text
     getSupportActionBar().setTitle("Mountain Search");
