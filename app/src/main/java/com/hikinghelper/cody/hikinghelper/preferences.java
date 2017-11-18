@@ -8,26 +8,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-public class beforehike extends AppCompatActivity {
+public class preferences extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_beforehike);
+        setContentView(R.layout.activity_preferences);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //set action bar text
-        getSupportActionBar().setTitle("Before the Hike");
+        getSupportActionBar().setTitle("Preferences Search");
 
         //Send User back to guide page
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(beforehike.this, Guide.class));
+                startActivity(new Intent(preferences.this, MountainSearch.class));
             }
         });
     }
-
 }

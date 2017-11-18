@@ -34,7 +34,7 @@ public class MountainSearch extends AppCompatActivity {
     private SearchView mountainName;
     private TextView mountainText, addressText, elevationText, difficultyText, parkingText, distanceText;
     String mountain, address, elevation, difficulty, parking, distance;
-    private Button searchMountain;
+    private Button searchMountain, more;
     private RequestQueue requestQueue;
     private static final String URL = "https://hikinghelper.000webhostapp.com/connect/mountains_response.php";
     private StringRequest request;
@@ -54,6 +54,15 @@ public class MountainSearch extends AppCompatActivity {
         difficultyText = (TextView) findViewById(R.id.txtDifficulty);
         parkingText = (TextView) findViewById(R.id.txtParking);
         distanceText = (TextView) findViewById(R.id.txtDistance);
+        more =(Button)findViewById(R.id.btnMore);
+
+        //Send user to Preferences Search page
+        more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MountainSearch.this, preferences.class));
+            }
+        });
 
         requestQueue = Volley.newRequestQueue(this);
 

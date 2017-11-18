@@ -27,4 +27,5 @@
     <string name="title_activity_whattopack">whattopack</string>
     <string name="title_activity_whattowear">whattowear</string>
     <string name="title_activity_tipandtrick">tipandtrick</string>
+    <string name="title_activity_preferences">preferences</string>
 </resources>

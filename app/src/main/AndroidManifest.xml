@@ -71,6 +71,10 @@
         <activity
             android:name=".tipandtrick"
             android:label="@string/title_activity_tipandtrick"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".preferences"
+            android:label="@string/title_activity_preferences"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

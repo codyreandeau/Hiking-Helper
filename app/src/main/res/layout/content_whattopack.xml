@@ -55,7 +55,7 @@
                 android:id="@+id/imageView11"
                 android:layout_width="match_parent"
                 android:layout_height="235dp"
-                android:src="@drawable/pack4" />
+                android:src="@drawable/pack3" />
 
             <TextView
                 android:id="@+id/textView12"
