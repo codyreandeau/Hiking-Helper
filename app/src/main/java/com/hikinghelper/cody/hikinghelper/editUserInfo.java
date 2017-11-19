@@ -104,7 +104,7 @@ public class editUserInfo extends AppCompatActivity {
                 intent.putExtra("ABOUT", aboutMe.getText().toString());*/
 
                 //Save first_name
-                /*String fn = firstName.getText().toString();
+                String fn = firstName.getText().toString();
                 mEditor.putString(getString(R.string.first_name), fn);
                 mEditor.commit();
 
@@ -121,7 +121,7 @@ public class editUserInfo extends AppCompatActivity {
                 //Save about me
                 String am = aboutMe.getText().toString();
                 mEditor.putString(getString(R.string.about_me), am);
-                mEditor.commit();*/
+                mEditor.commit();
 
                 //Pass image to user profile page
                 image.buildDrawingCache();
@@ -196,33 +196,12 @@ public class editUserInfo extends AppCompatActivity {
             public void onResponse(String response) {
                 try {
 
-                    //Get JSON Array userInfo
                     JSONObject jsonObject = new JSONObject(response);
-                    JSONArray jsonArray = jsonObject.getJSONArray("userInfo");
-                    JSONObject data = jsonArray.getJSONObject(0);
-
-                    //Save first name
-                    String fn = data.getString("first_name");
-                    mEditor.putString(getString(R.string.first_name), fn);
-                    mEditor.commit();
-
-                    //Save age
-                    String ag = data.getString("age");
-                    mEditor.putString(getString(R.string.age), ag);
-                    mEditor.commit();
-
-                    //Save experience
-                    String exp = data.getString("experience");
-                    mEditor.putString(getString(R.string.experience), exp);
-                    mEditor.commit();
-
-                    //Save about me
-                    String am = data.getString("about_me");
-                    mEditor.putString(getString(R.string.about_me), am);
-                    mEditor.commit();
-
-                    Toast.makeText(getApplicationContext(), "Info has been updated!", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getApplicationContext(), Home.class));
+                    if(jsonObject.names().get(0).equals("success")){
+                        Toast.makeText(getApplicationContext(),"SUCCESS "+jsonObject.getString("success"),Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(getApplicationContext(), "Error " +jsonObject.getString("error"), Toast.LENGTH_SHORT).show();
+                    }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
