@@ -14,6 +14,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class editUserInfo extends AppCompatActivity {
 
@@ -22,6 +39,9 @@ public class editUserInfo extends AppCompatActivity {
     Button button;
     private static final int PICK_IMAGE = 100;
     Uri imageUri;
+    private RequestQueue requestQueue;
+    private static final String URL = "https://hikinghelper.000webhostapp.com/connect/update_user_info.php";
+    private StringRequest request;
 
     private SharedPreferences mPreferences;
     private SharedPreferences.Editor mEditor;
@@ -74,6 +94,8 @@ public class editUserInfo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                mountainResponse();
+
                 //Pass data to user profile page
                 Intent intent = new Intent(editUserInfo.this, User.class);
                 /*intent.putExtra("FIRST_NAME", firstName.getText().toString());
@@ -82,7 +104,7 @@ public class editUserInfo extends AppCompatActivity {
                 intent.putExtra("ABOUT", aboutMe.getText().toString());*/
 
                 //Save first_name
-                String fn = firstName.getText().toString();
+                /*String fn = firstName.getText().toString();
                 mEditor.putString(getString(R.string.first_name), fn);
                 mEditor.commit();
 
@@ -99,7 +121,7 @@ public class editUserInfo extends AppCompatActivity {
                 //Save about me
                 String am = aboutMe.getText().toString();
                 mEditor.putString(getString(R.string.about_me), am);
-                mEditor.commit();
+                mEditor.commit();*/
 
                 //Pass image to user profile page
                 image.buildDrawingCache();
@@ -160,5 +182,70 @@ public class editUserInfo extends AppCompatActivity {
         age.setText(sharedAge);
         experience.setText(sharedExp);
         aboutMe.setText(sharedAboutMe);
+    }
+
+    private void mountainResponse() {
+
+        requestQueue = Volley.newRequestQueue(this);
+
+        final String sharedUserName = mPreferences.getString("com.hikinghelper.cody.hikinghelper.username_save", "");
+
+        //Validate user in the database
+        request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+
+                    //Get JSON Array userInfo
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONArray jsonArray = jsonObject.getJSONArray("userInfo");
+                    JSONObject data = jsonArray.getJSONObject(0);
+
+                    //Save first name
+                    String fn = data.getString("first_name");
+                    mEditor.putString(getString(R.string.first_name), fn);
+                    mEditor.commit();
+
+                    //Save age
+                    String ag = data.getString("age");
+                    mEditor.putString(getString(R.string.age), ag);
+                    mEditor.commit();
+
+                    //Save experience
+                    String exp = data.getString("experience");
+                    mEditor.putString(getString(R.string.experience), exp);
+                    mEditor.commit();
+
+                    //Save about me
+                    String am = data.getString("about_me");
+                    mEditor.putString(getString(R.string.about_me), am);
+                    mEditor.commit();
+
+                    Toast.makeText(getApplicationContext(), "Info has been updated!", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(), Home.class));
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(), "Something went wrong.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> hashMap = new HashMap<String, String>();
+                hashMap.put("first_name", firstName.getText().toString());
+                hashMap.put("age", age.getText().toString());
+                hashMap.put("experience", experience.getText().toString());
+                hashMap.put("about_me", aboutMe.getText().toString());
+                hashMap.put("username", sharedUserName);
+                return hashMap;
+            }
+        };
+        requestQueue.add(request);
     }
 }

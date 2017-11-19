@@ -113,25 +113,30 @@ public class login extends AppCompatActivity {
                                         mEditor.commit();
                                     }
 
-                                    //Save first name
-                                    String fn = data.getString("first_name");
-                                    mEditor.putString(getString(R.string.first_name), fn);
-                                    mEditor.commit();
+                                   //Save username
+                                      String un = username.getText().toString();
+                                      mEditor.putString(getString(R.string.username_save), un);
+                                      mEditor.commit();
 
-                                    //Save age
-                                    String ag = data.getString("age");
-                                    mEditor.putString(getString(R.string.age), ag);
-                                    mEditor.commit();
+                                      //Save first name
+                                      String fn = data.getString("first_name");
+                                      mEditor.putString(getString(R.string.first_name), fn);
+                                      mEditor.commit();
 
-                                    //Save experience
-                                    String exp = data.getString("experience");
-                                    mEditor.putString(getString(R.string.experience), exp);
-                                    mEditor.commit();
+                                      //Save age
+                                      String ag = data.getString("age");
+                                      mEditor.putString(getString(R.string.age), ag);
+                                      mEditor.commit();
 
-                                    //Save about me
-                                    String am = data.getString("about_me");
-                                    mEditor.putString(getString(R.string.about_me), am);
-                                    mEditor.commit();
+                                      //Save experience
+                                      String exp = data.getString("experience");
+                                      mEditor.putString(getString(R.string.experience), exp);
+                                      mEditor.commit();
+
+                                      //Save about me
+                                      String am = data.getString("about_me");
+                                      mEditor.putString(getString(R.string.about_me), am);
+                                      mEditor.commit();
 
                                     Toast.makeText(getApplicationContext(), "Success! Welcome to Hiking Helper!", Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(getApplicationContext(), Home.class));
