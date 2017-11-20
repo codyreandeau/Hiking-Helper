@@ -42,19 +42,20 @@ public class preferences extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         searchMountain = (Button) findViewById(R.id.btnSearch);
-        tryAgain = (Button) findViewById(R.id.btnTryAgain);
+        /*tryAgain = (Button) findViewById(R.id.btnTryAgain);
 
         tryAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mountainResponse();
             }
-        });
+        });*/
 
         searchMountain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mountainResponse();
+                searchMountain.setText("Try Again");
             }
         });
 
@@ -100,12 +101,12 @@ public class preferences extends AppCompatActivity {
                             parking = data.getString("parking");
                             distance = data.getString("length");
 
-                            mountainText.setText(mountain);
-                            addressText.setText(address);
-                            elevationText.setText(elevation + "ft.");
-                            difficultyText.setText(difficulty);
-                            parkingText.setText(parking);
-                            distanceText.setText(distance + " miles");
+                            mountainText.setText("Name: " + mountain);
+                            addressText.setText("Address: " + address);
+                            elevationText.setText("Elevation: " + elevation + "ft.");
+                            difficultyText.setText("Difficulty: " + difficulty);
+                            parkingText.setText("Parking: " + parking);
+                            distanceText.setText("Distance: " + distance + " miles");
 
                         } catch (JSONException e) {
                             e.printStackTrace();

@@ -11,7 +11,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="500dp">
 
         <TextView
             android:id="@+id/lblSearch"
@@ -94,137 +94,72 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtDifficulty"
             android:layout_marginTop="14dp"
-            android:layout_toLeftOf="@+id/txtDifficulty"
             android:layout_toStartOf="@+id/txtDifficulty"
-            android:text="Search" />
-
-        <Button
-            android:id="@+id/btnTryAgain"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:text="Try Again"
-            android:layout_alignBaseline="@+id/btnSearch"
-            android:layout_alignBottom="@+id/btnSearch"
-            android:layout_toRightOf="@+id/btnSearch"
-            android:layout_toEndOf="@+id/btnSearch" />
-
-        <TextView
-            android:id="@+id/textView16"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="19dp"
-            android:text="Name:"
-            android:layout_below="@+id/btnSearch"
-            android:layout_alignRight="@+id/textView20"
-            android:layout_alignEnd="@+id/textView20" />
-
-        <TextView
-            android:id="@+id/textView17"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Address:"
-            android:layout_below="@+id/textView16"
-            android:layout_alignLeft="@+id/lblMaxMiles"
-            android:layout_alignStart="@+id/lblMaxMiles" />
-
-        <TextView
-            android:id="@+id/textView18"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="11dp"
-            android:text="Elevation:"
-            android:layout_below="@+id/textView17"
-            android:layout_alignLeft="@+id/textView20"
-            android:layout_alignStart="@+id/textView20" />
-
-        <TextView
-            android:id="@+id/textView20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
-            android:text="Difficulty:"
-            android:layout_below="@+id/textView18"
-            android:layout_alignRight="@+id/textView25"
-            android:layout_alignEnd="@+id/textView25" />
-
-        <TextView
-            android:id="@+id/textView21"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/textView17"
-            android:layout_alignRight="@+id/textView17"
-            android:layout_below="@+id/textView20"
-            android:layout_marginTop="9dp"
-            android:text="Parking:" />
-
-        <TextView
-            android:id="@+id/textView25"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Distance:"
-            android:layout_below="@+id/textView21"
-            android:layout_alignLeft="@+id/textView17"
-            android:layout_alignStart="@+id/textView17"
-            android:layout_marginTop="7dp" />
+            android:text="Search"
+            android:layout_alignRight="@+id/txtDifficulty"
+            android:layout_alignEnd="@+id/txtDifficulty" />
 
         <TextView
             android:id="@+id/txtMountainName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="                          "
-            android:layout_alignBaseline="@+id/textView16"
-            android:layout_alignBottom="@+id/textView16"
-            android:layout_alignRight="@+id/txtDifficulty"
-            android:layout_alignEnd="@+id/txtDifficulty" />
+            android:layout_marginTop="13dp"
+            android:text="                                         "
+            android:layout_below="@+id/btnSearch"
+            android:layout_alignLeft="@+id/lblSearch"
+            android:layout_alignStart="@+id/lblSearch"
+            android:layout_marginLeft="21dp"
+            android:layout_marginStart="21dp" />
 
         <TextView
             android:id="@+id/txtAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/textView17"
-            android:layout_alignBottom="@+id/textView17"
             android:layout_alignLeft="@+id/txtMountainName"
             android:layout_alignStart="@+id/txtMountainName"
-            android:text="                                                                 " />
+            android:layout_below="@+id/txtMountainName"
+            android:layout_marginTop="12dp"
+            android:text="                                                                                  " />
 
         <TextView
             android:id="@+id/txtElevation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="                                         "
+            android:layout_below="@+id/txtAddress"
             android:layout_alignLeft="@+id/txtAddress"
-            android:layout_alignStart="@+id/txtAddress"
-            android:layout_alignTop="@+id/textView18"
-            android:text="                        " />
+            android:layout_alignStart="@+id/txtAddress" />
 
         <TextView
             android:id="@+id/txtDiff"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:text="                                         "
+            android:layout_below="@+id/txtElevation"
             android:layout_alignLeft="@+id/txtElevation"
-            android:layout_alignStart="@+id/txtElevation"
-            android:layout_alignTop="@+id/textView20"
-            android:text="                        " />
+            android:layout_alignStart="@+id/txtElevation" />
 
         <TextView
             android:id="@+id/txtParking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/textView25"
+            android:layout_marginTop="12dp"
+            android:text="                                         "
+            android:layout_below="@+id/txtDiff"
             android:layout_alignLeft="@+id/txtDiff"
-            android:layout_alignStart="@+id/txtDiff"
-            android:text="              " />
+            android:layout_alignStart="@+id/txtDiff" />
 
         <TextView
             android:id="@+id/txtDistance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:text="                                       "
+            android:layout_below="@+id/txtParking"
             android:layout_alignLeft="@+id/txtParking"
-            android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/txtParking"
-            android:text="     " />
+            android:layout_alignStart="@+id/txtParking" />
 
     </RelativeLayout>
 
