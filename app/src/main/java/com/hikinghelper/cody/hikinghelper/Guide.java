@@ -25,8 +25,6 @@ public class Guide extends AppCompatActivity {
         Button wear_but =(Button)findViewById(R.id.wear_but);
         Button tip_but =(Button)findViewById(R.id.tip_but);
 
-
-
         //Send user to Before_Hike page
         hike_but.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,5 +63,4 @@ public class Guide extends AppCompatActivity {
             }
         });
     }
-
 }

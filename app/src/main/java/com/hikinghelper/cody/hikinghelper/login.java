@@ -53,7 +53,6 @@ public class login extends AppCompatActivity {
         remember = (CheckBox) findViewById(R.id.checkBox);
 
         mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        //mPreferences = getSharedPreferences("com.hikinghelper.cody.hikinghelper", Context.MODE_PRIVATE);
         mEditor = mPreferences.edit();
 
         checkSharedPreferences();

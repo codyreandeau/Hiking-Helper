@@ -59,7 +59,6 @@ public class editUserInfo extends AppCompatActivity {
         aboutMe = (EditText) findViewById(R.id.txtAbout);
         image = (ImageView) findViewById(R.id.imageView3);
 
-
         //get information passed from the User page
         firstName.setText(getIntent().getStringExtra("FIRST_NAME"));
         age.setText(getIntent().getStringExtra("AGE"));
@@ -82,7 +81,6 @@ public class editUserInfo extends AppCompatActivity {
         }
 
         mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        //mPreferences = getSharedPreferences("com.hikinghelper.cody.hikinghelper", Context.MODE_PRIVATE);
         mEditor = mPreferences.edit();
 
         checkSharedPreferences();
@@ -98,10 +96,6 @@ public class editUserInfo extends AppCompatActivity {
 
                 //Pass data to user profile page
                 Intent intent = new Intent(editUserInfo.this, User.class);
-                /*intent.putExtra("FIRST_NAME", firstName.getText().toString());
-                intent.putExtra("AGE", age.getText().toString());
-                intent.putExtra("EXP", experience.getText().toString());
-                intent.putExtra("ABOUT", aboutMe.getText().toString());*/
 
                 //Save first_name
                 String fn = firstName.getText().toString();

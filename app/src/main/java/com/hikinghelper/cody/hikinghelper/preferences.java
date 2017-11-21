@@ -42,14 +42,6 @@ public class preferences extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         searchMountain = (Button) findViewById(R.id.btnSearch);
-        /*tryAgain = (Button) findViewById(R.id.btnTryAgain);
-
-        tryAgain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mountainResponse();
-            }
-        });*/
 
         searchMountain.setOnClickListener(new View.OnClickListener() {
             @Override

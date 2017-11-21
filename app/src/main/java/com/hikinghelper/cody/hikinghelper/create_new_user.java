@@ -55,11 +55,11 @@ public class create_new_user extends AppCompatActivity {
         register = (Button) findViewById(R.id.btnCreate);
 
         mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        //mPreferences = getSharedPreferences("com.hikinghelper.cody.hikinghelper", Context.MODE_PRIVATE);
         mEditor = mPreferences.edit();
 
         checkSharedPreferences();
 
+        //Clear the sharedPreferences data from the textfields
         first_name.setText("");
         age.setText("");
 

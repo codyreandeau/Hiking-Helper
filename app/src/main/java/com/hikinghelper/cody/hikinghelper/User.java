@@ -46,12 +46,6 @@ public class User extends AppCompatActivity {
         String am = mPreferences.getString(getString(R.string.about_me), "");
         aboutMe.setText(am);
 
-        //Get passed data from the create new user page
-        /*firstName.setText(getIntent().getStringExtra("FIRST_NAME"));
-        age.setText(getIntent().getStringExtra("AGE"));
-        experience.setText(getIntent().getStringExtra("EXP"));
-        aboutMe.setText(getIntent().getStringExtra("ABOUT"));*/
-
         //get image from edit user info page, if any
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
