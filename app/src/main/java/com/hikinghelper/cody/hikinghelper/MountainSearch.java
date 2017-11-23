@@ -3,13 +3,10 @@ package com.hikinghelper.cody.hikinghelper;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.SearchView;
@@ -48,7 +45,7 @@ public class MountainSearch extends AppCompatActivity {
 
         mountainName = (SearchView) findViewById(R.id.mountainSearch);
         searchMountain = (Button) findViewById(R.id.btnSearchMount);
-        mountainText = (TextView) findViewById(R.id.txtMountainName);
+        mountainText = (TextView) findViewById(R.id.txtName);
         addressText = (TextView) findViewById(R.id.txtAddress);
         elevationText = (TextView) findViewById(R.id.txtElevation);
         difficultyText = (TextView) findViewById(R.id.txtDifficulty);

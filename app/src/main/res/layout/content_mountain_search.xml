@@ -127,7 +127,7 @@
             android:layout_toEndOf="@+id/btnSearchMount" />
 
         <TextView
-            android:id="@+id/txtMountainName"
+            android:id="@+id/txtName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="                     "
@@ -144,8 +144,8 @@
             android:text="                                  "
             android:layout_alignBaseline="@+id/textView"
             android:layout_alignBottom="@+id/textView"
-            android:layout_alignLeft="@+id/txtMountainName"
-            android:layout_alignStart="@+id/txtMountainName" />
+            android:layout_alignLeft="@+id/txtName"
+            android:layout_alignStart="@+id/txtName" />
 
         <TextView
             android:id="@+id/txtElevation"

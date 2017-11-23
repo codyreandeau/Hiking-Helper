@@ -25,7 +25,7 @@ public class User extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        firstName = (TextView) findViewById(R.id.txtMountainName);
+        firstName = (TextView) findViewById(R.id.txtName);
         age = (TextView) findViewById(R.id.txtAge);
         experience = (TextView) findViewById(R.id.txtExp);
         aboutMe = (TextView) findViewById(R.id.txtAbout);

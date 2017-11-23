@@ -14,7 +14,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -25,7 +24,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -53,7 +51,7 @@ public class editUserInfo extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        firstName = (EditText) findViewById(R.id.txtMountainName);
+        firstName = (EditText) findViewById(R.id.txtName);
         age = (EditText) findViewById(R.id.txtAge);
         experience = (EditText) findViewById(R.id.txtExp);
         aboutMe = (EditText) findViewById(R.id.txtAbout);

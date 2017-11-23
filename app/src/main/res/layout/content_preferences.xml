@@ -100,7 +100,7 @@
             android:layout_alignEnd="@+id/txtDifficulty" />
 
         <TextView
-            android:id="@+id/txtMountainName"
+            android:id="@+id/txtName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="13dp"
@@ -115,9 +115,9 @@
             android:id="@+id/txtAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/txtMountainName"
-            android:layout_alignStart="@+id/txtMountainName"
-            android:layout_below="@+id/txtMountainName"
+            android:layout_alignLeft="@+id/txtName"
+            android:layout_alignStart="@+id/txtName"
+            android:layout_below="@+id/txtName"
             android:layout_marginTop="12dp"
             android:text="                                                                                  " />
 
