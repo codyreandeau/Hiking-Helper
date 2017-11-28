@@ -7,7 +7,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.hikinghelper.cody.hikinghelper.User"
     tools:showIn="@layout/user"
-    android:background="#00cc66">
+    android:background="@drawable/gradient">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"

@@ -7,7 +7,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.hikinghelper.cody.hikinghelper.Guide"
     tools:showIn="@layout/guide"
-    android:background="#00cc66">
+    android:background="@drawable/gradient">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -19,20 +19,11 @@
             android:orientation="vertical"
             android:weightSum="1">
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="72dp"
-                android:text="Hiking Guide 101"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:layout_gravity="center"
-                android:gravity="center"/>
-
             <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/hiker" />
+                android:id="@+id/imageView17"
+                android:layout_width="387dp"
+                android:layout_height="243dp"
+                app:srcCompat="@drawable/survivalguide" />
 
             <Button
                 android:id="@+id/hike_but"
