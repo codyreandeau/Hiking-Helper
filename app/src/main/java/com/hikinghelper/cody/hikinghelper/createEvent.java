@@ -47,8 +47,6 @@ public class createEvent extends AppCompatActivity {
         time = (EditText) findViewById(R.id.txtTime);
         description = (EditText) findViewById(R.id.txtDescrption);
         create = (Button) findViewById(R.id.btnCreate);
-
-
         requestQueue = Volley.newRequestQueue(this);
 
         create.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +61,8 @@ public class createEvent extends AppCompatActivity {
 
                             JSONObject jsonObject = new JSONObject(response);
                             if (jsonObject.names().get(0).equals("success")) {
-                                Toast.makeText(getApplicationContext(), "SUCCESS " + jsonObject.getString("success"), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), jsonObject.getString("success") + " Event Created!", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(createEvent.this, event.class));
                             } else {
                                 Toast.makeText(getApplicationContext(), "Error " + jsonObject.getString("error"), Toast.LENGTH_SHORT).show();
                             }
