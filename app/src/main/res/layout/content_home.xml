@@ -86,7 +86,7 @@
         android:id="@+id/imageView15"
         android:layout_width="111dp"
         android:layout_height="121dp"
-        app:srcCompat="@drawable/survivalguide"
+        android:src="@drawable/survivalguide"
         tools:layout_editor_absoluteY="127dp"
         tools:layout_editor_absoluteX="33dp" />
 
@@ -94,7 +94,7 @@
         android:id="@+id/imageView16"
         android:layout_width="135dp"
         android:layout_height="172dp"
-        app:srcCompat="@drawable/mountain"
+        android:src="@drawable/mountain"
         tools:layout_editor_absoluteX="244dp"
         tools:layout_editor_absoluteY="112dp" />
 
@@ -102,7 +102,7 @@
         android:id="@+id/imageView18"
         android:layout_width="121dp"
         android:layout_height="106dp"
-        app:srcCompat="@drawable/profile"
+        android:src="@drawable/profile"
         tools:layout_editor_absoluteX="28dp"
         tools:layout_editor_absoluteY="335dp" />
 
@@ -110,7 +110,7 @@
         android:id="@+id/imageView19"
         android:layout_width="122dp"
         android:layout_height="107dp"
-        app:srcCompat="@drawable/event"
+        android:src="@drawable/event"
         tools:layout_editor_absoluteX="246dp"
         tools:layout_editor_absoluteY="338dp" />
 

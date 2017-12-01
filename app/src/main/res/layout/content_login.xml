@@ -13,7 +13,7 @@
         android:id="@+id/imageView5"
         android:layout_width="34dp"
         android:layout_height="34dp"
-        app:srcCompat="@drawable/lock"
+        android:src="@drawable/lock"
         tools:layout_editor_absoluteX="51dp"
         tools:layout_editor_absoluteY="148dp" />
 
@@ -90,7 +90,7 @@
         android:id="@+id/imageView2"
         android:layout_width="36dp"
         android:layout_height="35dp"
-        app:srcCompat="@drawable/user"
+        android:src="@drawable/user"
         tools:layout_editor_absoluteX="49dp"
         tools:layout_editor_absoluteY="99dp" />
 
@@ -98,7 +98,7 @@
         android:id="@+id/imageView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/hikingman2"
+        android:src="@drawable/hikingman2"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="279dp" />
 
@@ -106,7 +106,7 @@
         android:id="@+id/imageView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/hikinglogo"
+        android:src="@drawable/hikinglogo"
         tools:layout_editor_absoluteY="-53dp"
         tools:layout_editor_absoluteX="0dp" />
 

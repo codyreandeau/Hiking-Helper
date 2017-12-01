@@ -23,7 +23,7 @@
                 android:id="@+id/imageView17"
                 android:layout_width="387dp"
                 android:layout_height="243dp"
-                app:srcCompat="@drawable/survivalguide" />
+                android:src="@drawable/survivalguide" />
 
             <Button
                 android:id="@+id/hike_but"

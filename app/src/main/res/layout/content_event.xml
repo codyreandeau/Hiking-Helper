@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,19 +9,34 @@
     tools:showIn="@layout/event"
     android:background="#00cc66">
 
+    <ScrollView
+        android:layout_width="232dp"
+        android:layout_height="551dp"
+        tools:layout_editor_absoluteX="241dp"
+        tools:layout_editor_absoluteY="16dp">
+
+        <ListView
+            android:id="@+id/listv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+    </ScrollView>
+
     <Button
         android:id="@+id/btnCreate"
         android:layout_width="119dp"
         android:layout_height="49dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
         android:background="#bf8040"
         android:text="Create Event"
         android:textColor="#fff"
         android:textStyle="bold"
-        android:layout_marginLeft="8dp"
+        app:layout_constraintHorizontal_bias="0.964"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="16dp"
-        app:layout_constraintHorizontal_bias="0.964" />
-</android.support.constraint.ConstraintLayout>
+        app:layout_constraintTop_toTopOf="parent" />
+
+</LinearLayout>
