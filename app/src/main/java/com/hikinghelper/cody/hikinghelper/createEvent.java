@@ -31,7 +31,6 @@ import java.util.Map;
 public class createEvent extends AppCompatActivity {
 
     EditText name, location, date, time, description;
-    TextView un;
     Button create;
     private RequestQueue requestQueue;
     private static final String URL = "https://hikinghelper.000webhostapp.com/connect/create_event.php";
@@ -44,12 +43,6 @@ public class createEvent extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor editor = mPreferences.edit();
-
-        String uname = mPreferences.getString(getString(R.string.username), "");
-        un.setText(uname);
-
         name = (EditText) findViewById(R.id.txtName);
         location = (EditText) findViewById(R.id.txtLocation);
         date = (EditText) findViewById(R.id.txtDate);
@@ -57,6 +50,9 @@ public class createEvent extends AppCompatActivity {
         description = (EditText) findViewById(R.id.txtDescrption);
         create = (Button) findViewById(R.id.btnCreate);
         requestQueue = Volley.newRequestQueue(this);
+
+        SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        final String uname = mPreferences.getString(getString(R.string.username_save), "");
 
         create.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,7 +91,7 @@ public class createEvent extends AppCompatActivity {
                         hashMap.put("date", date.getText().toString());
                         hashMap.put("time", time.getText().toString());
                         hashMap.put("description", description.getText().toString());
-                        hashMap.put("created_by" , un.getText().toString());
+                        hashMap.put("created_by" , uname);
                         return hashMap;
                     }
                 };

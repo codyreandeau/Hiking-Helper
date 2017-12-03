@@ -113,7 +113,7 @@ public class login extends AppCompatActivity {
                                     }
 
                                    //Save username
-                                      String un = username.getText().toString();
+                                      String un = data.getString("username");
                                       mEditor.putString(getString(R.string.username_save), un);
                                       mEditor.commit();
 
