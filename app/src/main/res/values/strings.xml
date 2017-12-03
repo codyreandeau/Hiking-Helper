@@ -29,4 +29,5 @@
     <string name="title_activity_whattowear">whattowear</string>
     <string name="title_activity_tipandtrick">tipandtrick</string>
     <string name="title_activity_preferences">preferences</string>
+    <string name="title_activity_listview">listview</string>
 </resources>

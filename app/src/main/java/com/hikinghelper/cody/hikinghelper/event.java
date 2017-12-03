@@ -18,6 +18,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -26,6 +27,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class event extends AppCompatActivity {
@@ -33,8 +35,8 @@ public class event extends AppCompatActivity {
     private RequestQueue requestQueue;
     private static final String URL = "https://hikinghelper.000webhostapp.com/connect/fetch_events.php";
     private StringRequest request;
-    ArrayAdapter<String> adapter;
     ArrayList<String> items;
+    ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +44,11 @@ public class event extends AppCompatActivity {
         setContentView(R.layout.event);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ListView listView=(ListView)findViewById(R.id.listv);
-        items=new ArrayList<String>();
-        adapter=new ArrayAdapter(this, R.layout.event,R.id.txt,items);
-        listView.setAdapter(adapter);
+
+        ListView lv=(ListView)findViewById(R.id.listv);
+        items = new ArrayList<String>();
+        adapter = new ArrayAdapter<String>(this, R.layout.content_listview, R.id.txt, items);
+        lv.setAdapter(adapter);
 
         //set action bar text
         getSupportActionBar().setTitle("Events");
@@ -76,23 +79,23 @@ public class event extends AppCompatActivity {
         super.onStart();
         requestQueue = Volley.newRequestQueue(this);
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, URL, new Response.Listener<JSONArray>() {
+        request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
-            public void onResponse(JSONArray jsonArray) {
+            public void onResponse(String response) {
 
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    try {
-                        JSONObject jsonObject = jsonArray.getJSONObject(i);
-                        items.add(jsonObject.getString("name"));
-                        items.add(jsonObject.getString("location"));
-                        items.add(jsonObject.getString("date"));
-                        items.add(jsonObject.getString("time"));
-                        items.add(jsonObject.getString("description"));
-                    } catch (JSONException e) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            JSONArray jsonArray = jsonObject.getJSONArray("Events");
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                        JSONObject data = jsonArray.getJSONObject(i);
+                                        items.add(data.getString("name") + " - " + data.getString("location"));
+                                        items.add(data.getString("date"));
+                                        items.add(data.getString("time"));
+                                        items.add(data.getString("description"));
+                                    }
+                        } catch (JSONException e) {
                         e.printStackTrace();
-                    }
-                }
-                adapter.notifyDataSetChanged();
+                    } adapter.notifyDataSetChanged();
                 }
             }, new Response.ErrorListener() {
                 @Override
@@ -100,6 +103,6 @@ public class event extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Something went wrong.", Toast.LENGTH_SHORT).show();
                 }
             });
-      requestQueue.add(jsonArrayRequest);
+      requestQueue.add(request);
         }
 }

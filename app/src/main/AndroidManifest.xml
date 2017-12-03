@@ -4,6 +4,12 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher_web"
@@ -75,6 +81,10 @@
         <activity
             android:name=".preferences"
             android:label="@string/title_activity_preferences"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".listview"
+            android:label="@string/title_activity_listview"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

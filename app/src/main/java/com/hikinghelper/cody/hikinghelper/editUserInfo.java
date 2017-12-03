@@ -27,6 +27,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,6 +38,10 @@ public class editUserInfo extends AppCompatActivity {
     Button button;
     private static final int PICK_IMAGE = 100;
     Uri imageUri;
+    private String encoded_string, image_name;
+    private Bitmap bitmap;
+    private File file;
+    private Uri file_uri;
     private RequestQueue requestQueue;
     private static final String URL = "https://hikinghelper.000webhostapp.com/connect/update_user_info.php";
     private StringRequest request;
