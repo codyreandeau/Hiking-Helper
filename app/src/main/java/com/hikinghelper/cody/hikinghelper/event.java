@@ -88,10 +88,10 @@ public class event extends AppCompatActivity {
                             JSONArray jsonArray = jsonObject.getJSONArray("Events");
                                 for (int i = 0; i < jsonArray.length(); i++) {
                                         JSONObject data = jsonArray.getJSONObject(i);
-                                        items.add(data.getString("name") + " - " + data.getString("location"));
-                                        items.add(data.getString("date"));
-                                        items.add(data.getString("time"));
-                                        items.add(data.getString("description"));
+                                        items.add("Event: " + data.getString("name") + " - " + data.getString("location") + '\n' +
+                                        "Date/Time: " + data.getString("date") + " - " + data.getString("time") + '\n' +
+                                        "Description: " + data.getString("description") + '\n' +
+                                        "Created By: " + data.getString("created_by"));
                                     }
                         } catch (JSONException e) {
                         e.printStackTrace();

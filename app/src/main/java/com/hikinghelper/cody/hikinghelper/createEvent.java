@@ -3,6 +3,7 @@ package com.hikinghelper.cody.hikinghelper;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -29,6 +31,7 @@ import java.util.Map;
 public class createEvent extends AppCompatActivity {
 
     EditText name, location, date, time, description;
+    TextView un;
     Button create;
     private RequestQueue requestQueue;
     private static final String URL = "https://hikinghelper.000webhostapp.com/connect/create_event.php";
@@ -40,6 +43,12 @@ public class createEvent extends AppCompatActivity {
         setContentView(R.layout.activity_create_event);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = mPreferences.edit();
+
+        String uname = mPreferences.getString(getString(R.string.username), "");
+        un.setText(uname);
 
         name = (EditText) findViewById(R.id.txtName);
         location = (EditText) findViewById(R.id.txtLocation);
@@ -86,6 +95,7 @@ public class createEvent extends AppCompatActivity {
                         hashMap.put("date", date.getText().toString());
                         hashMap.put("time", time.getText().toString());
                         hashMap.put("description", description.getText().toString());
+                        hashMap.put("created_by" , un.getText().toString());
                         return hashMap;
                     }
                 };
