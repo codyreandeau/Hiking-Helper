@@ -74,7 +74,6 @@ public class createEvent extends AppCompatActivity {
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            //Toast.makeText(getApplicationContext(), "Something went wrong.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }, new Response.ErrorListener() {

@@ -3,7 +3,6 @@ package com.hikinghelper.cody.hikinghelper;
 import android.content.Intent;
 import android.os.Bundle;
 import android.content.SharedPreferences;
-import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -167,7 +166,6 @@ public class login extends AppCompatActivity {
                 }
             }
         });
-
 
         //set action bar text
         getSupportActionBar().setTitle("Login");

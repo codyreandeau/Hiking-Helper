@@ -1,21 +1,17 @@
 package com.hikinghelper.cody.hikinghelper;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.content.SharedPreferences;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -38,7 +34,6 @@ public class User extends AppCompatActivity {
         image = (ImageView) findViewById(R.id.imageView4);
 
         SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor editor = mPreferences.edit();
 
         String name = mPreferences.getString(getString(R.string.first_name), "");
         firstName.setText(name);
@@ -50,7 +45,6 @@ public class User extends AppCompatActivity {
         experience.setText(exp);
 
         String ip = mPreferences.getString("com.hikinghelper.cody.hikinghelper.imagepath", "");
-        //Toast.makeText(getApplicationContext(), ip, Toast.LENGTH_SHORT).show();
         Picasso.with(image.getContext()).load(ip).into(image);
 
 
