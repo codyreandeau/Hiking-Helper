@@ -137,6 +137,11 @@ public class login extends AppCompatActivity {
                                       mEditor.putString(getString(R.string.about_me), am);
                                       mEditor.commit();
 
+                                      //Save image path
+                                      String ip = data.getString("image_path");
+                                      mEditor.putString("com.hikinghelper.cody.hikinghelper.imagepath", ip);
+                                      mEditor.commit();
+
                                     Toast.makeText(getApplicationContext(), "Success! Welcome to Hiking Helper!", Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(getApplicationContext(), Home.class));
 

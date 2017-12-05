@@ -3,6 +3,7 @@
     <string name="checkbox">com.hikinghelper.cody.hikinghelper.checkbox</string>
     <string name="username">com.hikinghelper.cody.hikinghelper.name</string>
     <string name="username_save">com.hikinghelper.cody.hikinghelper.username_save</string>
+    <string name="imagepath">com.hikinghelper.cody.hikinghelper.imagepath</string>
     <string name="password">com.hikinghelper.cody.hikinghelper.password</string>
     <string name="first_name">com.hikinghelper.cody.hikinghelper.first_name</string>
     <string name="age">com.hikinghelper.cody.hikinghelper.age</string>

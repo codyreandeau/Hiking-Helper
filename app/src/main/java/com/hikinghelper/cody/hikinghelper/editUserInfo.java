@@ -10,6 +10,7 @@ import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,7 +28,9 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -41,6 +44,7 @@ public class editUserInfo extends AppCompatActivity {
     Uri imageUri;
     private String encoded_string, image_name;
     private Bitmap bitmap;
+    private Bitmap bitmap1;
     private File file;
     private Uri file_uri;
     private RequestQueue requestQueue;
@@ -151,21 +155,29 @@ public class editUserInfo extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openGallery();
+                Intent intent1 = new Intent();
+                intent1.setType("image/*");
+                intent1.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent1, "Select Picture"), 999);
             }
         });}
 
         //Open image gallery function
-        private void openGallery(){
+        /*private void openGallery(){
             Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
             startActivityForResult(gallery, PICK_IMAGE);
-        }
+        }*/
 
         @Override
         protected void onActivityResult(int requestCode, int resultCode, Intent data){
             super.onActivityResult(requestCode,resultCode,data);
-            if (requestCode == PICK_IMAGE){
+            if (requestCode == 999 && resultCode == RESULT_OK && data != null){
                 imageUri=data.getData();
+                try {
+                    bitmap1 = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+                }catch(IOException e){
+                    e.printStackTrace();
+                }
                 image.setImageURI(imageUri);
         }
     }
@@ -182,11 +194,20 @@ public class editUserInfo extends AppCompatActivity {
         aboutMe.setText(sharedAboutMe);
     }
 
+    public String getStringImage(Bitmap bm){
+        ByteArrayOutputStream ba = new ByteArrayOutputStream();
+        bm.compress(Bitmap.CompressFormat.PNG,100,ba);
+        byte[] imagebyte = ba.toByteArray();
+        String encode = Base64.encodeToString(imagebyte, Base64.DEFAULT);
+        return encode;
+    }
+
     private void mountainResponse() {
 
         requestQueue = Volley.newRequestQueue(this);
 
-        final String sharedUserName = mPreferences.getString("com.hikinghelper.cody.hikinghelper.username_save", "");
+        SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        final String uname = mPreferences.getString(getString(R.string.username_save), "");
 
         //Validate user in the database
         request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
@@ -214,12 +235,16 @@ public class editUserInfo extends AppCompatActivity {
         }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
+                String name = UUID.randomUUID().toString();
+                String image = getStringImage(bitmap1);
                 HashMap<String, String> hashMap = new HashMap<String, String>();
                 hashMap.put("first_name", firstName.getText().toString());
                 hashMap.put("age", age.getText().toString());
                 hashMap.put("experience", experience.getText().toString());
                 hashMap.put("about_me", aboutMe.getText().toString());
-                hashMap.put("username", sharedUserName);
+                hashMap.put("username", uname);
+                hashMap.put("image_name", name);
+                hashMap.put("image_path", image);
                 return hashMap;
             }
         };
