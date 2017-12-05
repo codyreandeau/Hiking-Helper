@@ -40,13 +40,9 @@ public class editUserInfo extends AppCompatActivity {
     EditText firstName, age, experience, aboutMe;
     ImageView image;
     Button button;
-    private static final int PICK_IMAGE = 100;
     Uri imageUri;
-    private String encoded_string, image_name;
-    private Bitmap bitmap;
+    boolean imageChanged = false;
     private Bitmap bitmap1;
-    private File file;
-    private Uri file_uri;
     private RequestQueue requestQueue;
     private static final String URL = "https://hikinghelper.000webhostapp.com/connect/update_user_info.php";
     private StringRequest request;
@@ -162,12 +158,6 @@ public class editUserInfo extends AppCompatActivity {
             }
         });}
 
-        //Open image gallery function
-        /*private void openGallery(){
-            Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-            startActivityForResult(gallery, PICK_IMAGE);
-        }*/
-
         @Override
         protected void onActivityResult(int requestCode, int resultCode, Intent data){
             super.onActivityResult(requestCode,resultCode,data);
@@ -179,6 +169,7 @@ public class editUserInfo extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 image.setImageURI(imageUri);
+                imageChanged = true;
         }
     }
 
@@ -236,6 +227,12 @@ public class editUserInfo extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 String name = UUID.randomUUID().toString();
+
+                if(imageChanged == true) {
+                    mEditor.putString("com.hikinghelper.cody.hikinghelper.imagepath", "https://hikinghelper.000webhostapp.com/connect/images/" + name + ".png");
+                    mEditor.commit();
+                }
+
                 String image = getStringImage(bitmap1);
                 HashMap<String, String> hashMap = new HashMap<String, String>();
                 hashMap.put("first_name", firstName.getText().toString());
