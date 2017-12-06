@@ -74,15 +74,9 @@ public class login extends AppCompatActivity {
             public void onClick(View view) {
 
                 //Check if any fields are left blank
-                String strUserName = username.getText().toString();
-                String strPassword = password.getText().toString();
-                if (strPassword.trim().equals("") && strUserName.trim().equals("")) {
-                    Toast.makeText(getApplicationContext(), "Please fill out both fields", Toast.LENGTH_SHORT).show();
-                }else if(strUserName.trim().equals("")){
-                    Toast.makeText(getApplicationContext(), "Please fill out the username field", Toast.LENGTH_SHORT).show();
-                }else if(strPassword.trim().equals("")){
-                    Toast.makeText(getApplicationContext(), "Please fill out the password field", Toast.LENGTH_SHORT).show();
-                } else {
+                if (isEmptyField(username)) return;
+                else if (isEmptyField(password)) return;
+                else{
 
                     //Validate user in the database
                     request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
@@ -205,5 +199,12 @@ public class login extends AppCompatActivity {
         }else{
             remember.setChecked(false);
         }
+    }
+
+    private boolean isEmptyField (EditText editText){
+        boolean result = editText.getText().toString().length() <= 0;
+        if (result)
+            Toast.makeText(getApplicationContext(), "Please fill out all fields!", Toast.LENGTH_SHORT).show();
+        return result;
     }
 }

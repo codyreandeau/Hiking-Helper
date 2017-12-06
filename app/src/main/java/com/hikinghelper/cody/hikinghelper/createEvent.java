@@ -58,43 +58,52 @@ public class createEvent extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                //Validate user in the database
-                request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
+                //Check if any of the text fields are empty
+                if (isEmptyField(name)) return;
+                else if (isEmptyField(location)) return;
+                else if (isEmptyField(date)) return;
+                else if (isEmptyField(time)) return;
+                else if (isEmptyField(description)) return;
+                else {
 
-                            JSONObject jsonObject = new JSONObject(response);
-                            if (jsonObject.names().get(0).equals("success")) {
-                                Toast.makeText(getApplicationContext(), jsonObject.getString("success") + " Event Created!", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(createEvent.this, event.class));
-                            } else {
-                                Toast.makeText(getApplicationContext(), "Error " + jsonObject.getString("error"), Toast.LENGTH_SHORT).show();
+                    //Validate user in the database
+                    request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+
+                                JSONObject jsonObject = new JSONObject(response);
+                                if (jsonObject.names().get(0).equals("success")) {
+                                    Toast.makeText(getApplicationContext(), jsonObject.getString("success") + " Event Created!", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(createEvent.this, event.class));
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "Error " + jsonObject.getString("error"), Toast.LENGTH_SHORT).show();
+                                }
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
                         }
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.printStackTrace();
-                    }
-                }) {
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        HashMap<String, String> hashMap = new HashMap<String, String>();
-                        hashMap.put("name", name.getText().toString());
-                        hashMap.put("location", location.getText().toString());
-                        hashMap.put("date", date.getText().toString());
-                        hashMap.put("time", time.getText().toString());
-                        hashMap.put("description", description.getText().toString());
-                        hashMap.put("created_by" , uname);
-                        return hashMap;
-                    }
-                };
-                requestQueue.add(request);
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            error.printStackTrace();
+                        }
+                    }) {
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            HashMap<String, String> hashMap = new HashMap<String, String>();
+                            hashMap.put("name", name.getText().toString());
+                            hashMap.put("location", location.getText().toString());
+                            hashMap.put("date", date.getText().toString());
+                            hashMap.put("time", time.getText().toString());
+                            hashMap.put("description", description.getText().toString());
+                            hashMap.put("created_by", uname);
+                            return hashMap;
+                        }
+                    };
+                    requestQueue.add(request);
+                }
             }
         });
 
@@ -109,5 +118,12 @@ public class createEvent extends AppCompatActivity {
                 startActivity(new Intent(createEvent.this, event.class));
             }
         });
+    }
+
+    private boolean isEmptyField (EditText editText){
+        boolean result = editText.getText().toString().length() <= 0;
+        if (result)
+            Toast.makeText(getApplicationContext(), "Please fill out all fields!", Toast.LENGTH_SHORT).show();
+        return result;
     }
 }
