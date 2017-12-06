@@ -46,8 +46,7 @@ public class User extends AppCompatActivity {
 
         String ip = mPreferences.getString("com.hikinghelper.cody.hikinghelper.imagepath", "");
         Picasso.with(image.getContext()).load(ip).into(image);
-
-
+        
         String am = mPreferences.getString(getString(R.string.about_me), "");
         aboutMe.setText(am);
 
