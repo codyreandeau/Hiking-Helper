@@ -54,6 +54,17 @@ public class login extends AppCompatActivity {
         mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mEditor = mPreferences.edit();
 
+        mEditor.remove(getString(R.string.first_name));
+        mEditor.commit();
+        mEditor.remove(getString(R.string.age));
+        mEditor.commit();
+        mEditor.remove(getString(R.string.experience));
+        mEditor.commit();
+        mEditor.remove(getString(R.string.about_me));
+        mEditor.commit();
+        mEditor.remove(getString(R.string.imagepath));
+        mEditor.commit();
+
         checkSharedPreferences();
 
         requestQueue = Volley.newRequestQueue(this);

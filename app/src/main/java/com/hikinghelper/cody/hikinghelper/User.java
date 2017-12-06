@@ -42,11 +42,15 @@ public class User extends AppCompatActivity {
         age.setText(mAge);
 
         String exp = mPreferences.getString(getString(R.string.experience), "");
-        experience.setText(exp);
+        if(exp != null) {
+            experience.setText(exp);
+        }
 
         String ip = mPreferences.getString("com.hikinghelper.cody.hikinghelper.imagepath", "");
-        Picasso.with(image.getContext()).load(ip).into(image);
-        
+        if(ip != null) {
+            Picasso.with(image.getContext()).load(ip).into(image);
+        }
+
         String am = mPreferences.getString(getString(R.string.about_me), "");
         aboutMe.setText(am);
 
