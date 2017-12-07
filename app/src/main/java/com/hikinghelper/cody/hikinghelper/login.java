@@ -54,7 +54,7 @@ public class login extends AppCompatActivity {
         mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mEditor = mPreferences.edit();
 
-        mEditor.remove(getString(R.string.first_name));
+        /*mEditor.remove(getString(R.string.first_name));
         mEditor.commit();
         mEditor.remove(getString(R.string.age));
         mEditor.commit();
@@ -63,7 +63,7 @@ public class login extends AppCompatActivity {
         mEditor.remove(getString(R.string.about_me));
         mEditor.commit();
         mEditor.remove(getString(R.string.imagepath));
-        mEditor.commit();
+        mEditor.commit();*/
 
         checkSharedPreferences();
 

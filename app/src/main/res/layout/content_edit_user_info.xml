@@ -67,8 +67,8 @@
 
         <EditText
             android:id="@+id/txtAbout"
-            android:layout_width="239dp"
-            android:layout_height="43dp"
+            android:layout_width="238dp"
+            android:layout_height="57dp"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
@@ -80,7 +80,8 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtExp" />
+            app:layout_constraintTop_toBottomOf="@+id/txtExp"
+            tools:layout_editor_absoluteY="386dp" />
 
         <Button
             android:id="@+id/btnUpdate"
@@ -106,14 +107,14 @@
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="186dp"
-            android:layout_height="127dp"
+            android:layout_width="261dp"
+            android:layout_height="163dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="65dp"
             android:src="@android:drawable/sym_def_app_icon"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="76dp"
-            android:layout_marginRight="8dp"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginLeft="8dp"
             app:layout_constraintLeft_toLeftOf="parent" />
 
     </android.support.constraint.ConstraintLayout>

@@ -15,15 +15,16 @@
 
         <ImageView
             android:id="@+id/imageView4"
-            android:layout_width="186dp"
-            android:layout_height="127dp"
+            android:layout_width="261dp"
+            android:layout_height="163dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginTop="74dp"
+            android:layout_marginTop="65dp"
             android:src="@android:drawable/sym_def_app_icon"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.504" />
 
         <TextView
         android:id="@+id/txtName"
@@ -96,5 +97,6 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
