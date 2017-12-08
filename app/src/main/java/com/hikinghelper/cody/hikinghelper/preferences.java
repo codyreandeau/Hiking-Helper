@@ -75,51 +75,58 @@ public class preferences extends AppCompatActivity {
 
         requestQueue = Volley.newRequestQueue(this);
 
-                //Validate user in the database
-                request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
+        String strInput = diffText.getText().toString();
 
-                            JSONObject jsonObject = new JSONObject(response);
-                            JSONArray jsonArray = jsonObject.getJSONArray("Mountains");
-                            JSONObject data = jsonArray.getJSONObject(0);
+        if (strInput.equals("1") || strInput.equals("2") || strInput.equals("3") || strInput.equals("4") ||
+                strInput.equals("5") || strInput.equals("6") || strInput.equals("7")) {
+            //Validate user in the database
+            request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    try {
 
-                            mountain = data.getString("mountainName");
-                            address = data.getString("address");
-                            elevation = data.getString("elevation");
-                            difficulty = data.getString("dificulty");
-                            parking = data.getString("parking");
-                            distance = data.getString("length");
+                        JSONObject jsonObject = new JSONObject(response);
+                        JSONArray jsonArray = jsonObject.getJSONArray("Mountains");
+                        JSONObject data = jsonArray.getJSONObject(0);
 
-                            mountainText.setText("Name: " + mountain);
-                            addressText.setText("Address: " + address);
-                            elevationText.setText("Elevation: " + elevation + "ft.");
-                            difficultyText.setText("Difficulty: " + difficulty);
-                            parkingText.setText("Parking: " + parking);
-                            distanceText.setText("Distance: " + distance + " miles");
+                        mountain = data.getString("mountainName");
+                        address = data.getString("address");
+                        elevation = data.getString("elevation");
+                        difficulty = data.getString("dificulty");
+                        parking = data.getString("parking");
+                        distance = data.getString("length");
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Toast.makeText(getApplicationContext(), "Mountain Not Found.", Toast.LENGTH_SHORT).show();
-                        }
+                        mountainText.setText("Name: " + mountain);
+                        addressText.setText("Address: " + address);
+                        elevationText.setText("Elevation: " + elevation + "ft.");
+                        difficultyText.setText("Difficulty: " + difficulty);
+                        parkingText.setText("Parking: " + parking);
+                        distanceText.setText("Distance: " + distance + " miles");
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        Toast.makeText(getApplicationContext(), "Mountain Not Found.", Toast.LENGTH_SHORT).show();
                     }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), "Mountain Not Found", Toast.LENGTH_SHORT).show();
-                        error.printStackTrace();
-                    }
-                }) {
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        HashMap<String, String> hashMap = new HashMap<String, String>();
-                        hashMap.put("length", minMilesText.getText().toString());
-                        hashMap.put("length2", maxMilesText.getText().toString());
-                        hashMap.put("dificulty", diffText.getText().toString());
-                        return hashMap;
-                    }
-                };
-                requestQueue.add(request);
-            }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(getApplicationContext(), "Mountain Not Found", Toast.LENGTH_SHORT).show();
+                    error.printStackTrace();
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    HashMap<String, String> hashMap = new HashMap<String, String>();
+                    hashMap.put("length", minMilesText.getText().toString());
+                    hashMap.put("length2", maxMilesText.getText().toString());
+                    hashMap.put("dificulty", diffText.getText().toString());
+                    return hashMap;
+                }
+            };
+            requestQueue.add(request);
+        }else{
+            Toast.makeText(getApplicationContext(), "Difficulty must be between 1 and 7.", Toast.LENGTH_SHORT).show();
         }
+    }
+}
