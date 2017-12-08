@@ -96,6 +96,15 @@ public class create_new_user extends AppCompatActivity {
                                     mEditor.putString(getString(R.string.age), ag);
                                     mEditor.commit();
 
+                                    mEditor.putString(getString(R.string.experience), "");
+                                    mEditor.commit();
+
+                                    mEditor.putString(getString(R.string.about_me), "");
+                                    mEditor.commit();
+
+                                    mEditor.putString(getString(R.string.imagepath), "");
+                                    mEditor.commit();
+
                                     startActivity(new Intent(getApplicationContext(), User.class));
                                 } else {
                                     Toast.makeText(getApplicationContext(), "Error" + jsonObject.getString("error"), Toast.LENGTH_SHORT).show();
