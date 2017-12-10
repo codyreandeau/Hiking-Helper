@@ -75,6 +75,7 @@ public class create_new_user extends AppCompatActivity {
                 else if (isEmptyField(first_name)) return;
                 else if (isEmptyField(last_name)) return;
                 else if (isEmptyField(age)) return;
+                else if (!passValidation(password.getText().toString())) return;
                 else {
 
                     //Add user to the database
@@ -166,4 +167,28 @@ public class create_new_user extends AppCompatActivity {
         first_name.setText(sharedName);
         age.setText(sharedAge);
     }
+
+    protected boolean passValidation(String password)
+    {
+        boolean isValid = true;
+        if (password.length() > 16 || password.length() < 8) {
+            isValid = false;
+            Toast.makeText(getApplicationContext(), "Password should be at least 8 in length but no greater than 16.", Toast.LENGTH_SHORT).show();
+        } else if (!password.matches("(.*[A-Z].*)" )) {
+            isValid = false;
+            Toast.makeText(getApplicationContext(), "Password should contain at least one upper case letter [A-Z]", Toast.LENGTH_SHORT).show();
+        } else if (!password.matches("(.*[a-z].*)")) {
+            isValid = false;
+            Toast.makeText(getApplicationContext(),"Password should contain at least one lower case letter [A-Z]", Toast.LENGTH_SHORT).show();
+        }else if (!password.matches("(.*[0-9].*)"))  {
+            isValid = false;
+            Toast.makeText(getApplicationContext(), "Password should contain at least one number.", Toast.LENGTH_SHORT).show();
+        }else if (!password.matches("(.*[,~,!,@,#,$,%,^,&,*,(,),-,_,=,+,[,{,],},|,;,:,<,>,/,?].*$)" )) {
+            isValid = false;
+            Toast.makeText(getApplicationContext(), "Password should contain at least one special character", Toast.LENGTH_SHORT).show();
+        }
+        return isValid;
+    }
 }
+
+

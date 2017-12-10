@@ -51,6 +51,7 @@
         android:layout_marginStart="37dp"
         android:layout_marginTop="8dp"
         android:ems="10"
+        android:hint="YYYY-MM-DD"
         android:inputType="textPersonName|time"
         app:layout_constraintHorizontal_bias="0.514"
         app:layout_constraintLeft_toLeftOf="parent"

@@ -64,6 +64,8 @@ public class createEvent extends AppCompatActivity {
                 else if (isEmptyField(date)) return;
                 else if (isEmptyField(time)) return;
                 else if (isEmptyField(description)) return;
+                else if (!date.getText().toString().matches("\\d{4}-\\d{2}-\\d{2}"))
+                    Toast.makeText(getApplicationContext(), "Date format should be YYYY-MM-DD", Toast.LENGTH_SHORT).show();
                 else {
 
                     //Validate user in the database
