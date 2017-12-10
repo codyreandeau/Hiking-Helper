@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -31,11 +32,13 @@ import java.util.Map;
 public class login extends AppCompatActivity {
 
     private EditText username, password;
+    private ImageView image, image2;
     private Button sign_in_register;
     private CheckBox remember;
     private RequestQueue requestQueue;
     private static final String URL = "https://hikinghelper.000webhostapp.com/connect/user_login.php";
     private StringRequest request;
+
 
     private SharedPreferences mPreferences;
     private SharedPreferences.Editor mEditor;
@@ -50,9 +53,14 @@ public class login extends AppCompatActivity {
         password = (EditText) findViewById(R.id.txtPassword);
         sign_in_register = (Button) findViewById(R.id.btnLoginUser);
         remember = (CheckBox) findViewById(R.id.checkBox);
+        image = (ImageView) findViewById(R.id.imageView6);
+        image2 = (ImageView) findViewById(R.id.imageView9);
 
         mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mEditor = mPreferences.edit();
+
+        image.setImageDrawable(getResources().getDrawable(R.drawable.hiking));
+        image2.setImageDrawable(getResources().getDrawable(R.drawable.hikingman2));
 
         /*mEditor.remove(getString(R.string.first_name));
         mEditor.commit();

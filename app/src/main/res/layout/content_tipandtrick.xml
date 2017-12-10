@@ -18,8 +18,7 @@
             <ImageView
                 android:id="@+id/imageView12"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/tip2" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/textView13"
@@ -31,7 +30,6 @@
                 android:id="@+id/imageView13"
                 android:layout_width="match_parent"
                 android:layout_height="201dp"
-                android:src="@drawable/tip3"
                 android:layout_weight="0.00" />
 
             <TextView
@@ -43,8 +41,7 @@
             <ImageView
                 android:id="@+id/imageView10"
                 android:layout_width="381dp"
-                android:layout_height="214dp"
-                android:src="@drawable/tip1" />
+                android:layout_height="214dp" />
 
             <TextView
                 android:id="@+id/textView11"
@@ -56,7 +53,6 @@
                 android:id="@+id/imageView11"
                 android:layout_width="389dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/tip4"
                 android:layout_weight="0.31" />
 
             <TextView

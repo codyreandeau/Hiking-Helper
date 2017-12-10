@@ -18,8 +18,7 @@
             <ImageView
                 android:id="@+id/imageView12"
                 android:layout_width="match_parent"
-                android:layout_height="171dp"
-                android:src="@drawable/pack1" />
+                android:layout_height="171dp" />
 
             <TextView
                 android:id="@+id/textView13"
@@ -30,8 +29,7 @@
             <ImageView
                 android:id="@+id/imageView13"
                 android:layout_width="381dp"
-                android:layout_height="122dp"
-                android:src="@drawable/pack2" />
+                android:layout_height="122dp" />
 
             <TextView
                 android:id="@+id/textView14"
@@ -43,8 +41,7 @@
                 android:id="@+id/imageView10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.08"
-                android:src="@drawable/pack3" />
+                android:layout_weight="0.08" />
 
             <TextView
                 android:id="@+id/textView11"
@@ -55,8 +52,7 @@
             <ImageView
                 android:id="@+id/imageView11"
                 android:layout_width="match_parent"
-                android:layout_height="235dp"
-                android:src="@drawable/food" />
+                android:layout_height="235dp" />
 
             <TextView
                 android:id="@+id/textView12"

@@ -7,8 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class Guide extends AppCompatActivity {
+
+    private ImageView image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +24,10 @@ public class Guide extends AppCompatActivity {
         Button pack_but =(Button)findViewById(R.id.pack_but);
         Button wear_but =(Button)findViewById(R.id.wear_but);
         Button tip_but =(Button)findViewById(R.id.tip_but);
+
+        image = (ImageView) findViewById(R.id.imageView17);
+
+        image.setImageDrawable(getResources().getDrawable(R.drawable.survivalguide));
 
         //Send user to Before_Hike page
         hike_but.setOnClickListener(new View.OnClickListener() {

@@ -20,8 +20,7 @@ android:background="@drawable/gradient">
             android:id="@+id/imageView14"
             android:layout_width="match_parent"
             android:layout_height="153dp"
-            android:layout_weight="0.70"
-            android:src="@drawable/before1" />
+            android:layout_weight="0.70" />
 
         <TextView
             android:id="@+id/textView13"
@@ -33,7 +32,6 @@ android:background="@drawable/gradient">
             android:id="@+id/imageView13"
             android:layout_width="match_parent"
             android:layout_height="140dp"
-            android:src="@drawable/before2"
             android:layout_weight="0.68" />
 
         <TextView
@@ -46,7 +44,6 @@ android:background="@drawable/gradient">
             android:id="@+id/imageView10"
             android:layout_width="match_parent"
             android:layout_height="96dp"
-            android:src="@drawable/before3"
             android:layout_weight="0.88" />
 
         <TextView
@@ -59,7 +56,6 @@ android:background="@drawable/gradient">
             android:id="@+id/imageView11"
             android:layout_width="match_parent"
             android:layout_height="146dp"
-            android:src="@drawable/before4"
             android:layout_weight="0.69" />
 
         <TextView

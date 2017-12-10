@@ -22,8 +22,7 @@
             <ImageView
                 android:id="@+id/imageView17"
                 android:layout_width="387dp"
-                android:layout_height="243dp"
-                android:src="@drawable/survivalguide" />
+                android:layout_height="243dp" />
 
             <Button
                 android:id="@+id/hike_but"

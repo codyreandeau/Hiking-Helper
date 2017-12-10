@@ -15,9 +15,12 @@ import android.view.MenuItem;
 import android.content.Intent;
 import android.widget.Button;
 import android.widget.Toast;
+import android.widget.ImageView;
 
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    ImageView image1, image2, image3, image4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,15 @@ public class Home extends AppCompatActivity
         Button btnEvents=(Button)findViewById(R.id.btnEvents);
         Button btnUser=(Button)findViewById(R.id.btnUser);
         Button btnLogin=(Button)findViewById(R.id.btnLogin);
+        image1 = (ImageView)findViewById(R.id.imageView15);
+        image2 = (ImageView)findViewById(R.id.imageView16);
+        image3 = (ImageView)findViewById(R.id.imageView18);
+        image4 = (ImageView)findViewById(R.id.imageView19);
+
+        image1.setImageDrawable(getResources().getDrawable(R.drawable.survivalguide));
+        image2.setImageDrawable(getResources().getDrawable(R.drawable.mountain));
+        image3.setImageDrawable(getResources().getDrawable(R.drawable.profile));
+        image4.setImageDrawable(getResources().getDrawable(R.drawable.event));
 
         //Send user to Login page
         btnLogin.setOnClickListener(new View.OnClickListener() {
