@@ -16,8 +16,8 @@ public class beforehike extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beforehike);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
         image1 = (ImageView)findViewById(R.id.imageView14);
         image2 = (ImageView)findViewById(R.id.imageView13);
@@ -30,7 +30,7 @@ public class beforehike extends AppCompatActivity {
         image4.setImageDrawable(getResources().getDrawable(R.drawable.before4));
 
         //set action bar text
-        getSupportActionBar().setTitle("Before the Hike");
+        //getSupportActionBar().setTitle("Before the Hike");
 
         //Send User back to guide page
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);

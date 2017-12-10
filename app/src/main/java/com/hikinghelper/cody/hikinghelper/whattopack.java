@@ -16,8 +16,8 @@ public class whattopack extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_whattopack);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
         image1 = (ImageView)findViewById(R.id.imageView12);
         image2 = (ImageView)findViewById(R.id.imageView13);
         image3 = (ImageView)findViewById(R.id.imageView10);
@@ -29,7 +29,7 @@ public class whattopack extends AppCompatActivity {
         image4.setImageDrawable(getResources().getDrawable(R.drawable.food));
 
         //set action bar text
-        getSupportActionBar().setTitle("What to Pack");
+        //getSupportActionBar().setTitle("What to Pack");
 
         //Send User back to guide page
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);

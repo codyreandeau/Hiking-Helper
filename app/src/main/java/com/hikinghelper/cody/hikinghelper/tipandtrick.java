@@ -16,8 +16,8 @@ public class tipandtrick extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tipandtrick);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
         image1 = (ImageView)findViewById(R.id.imageView12);
         image2 = (ImageView)findViewById(R.id.imageView13);
@@ -30,7 +30,7 @@ public class tipandtrick extends AppCompatActivity {
         image4.setImageDrawable(getResources().getDrawable(R.drawable.tip4));
 
         //set action bar text
-        getSupportActionBar().setTitle("Tips and Tricks");
+        //getSupportActionBar().setTitle("Tips and Tricks");
 
         //Send User back to guide page
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);

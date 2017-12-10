@@ -16,11 +16,11 @@ public class whattowear extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_whattowear);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
         //set action bar text
-        getSupportActionBar().setTitle("What to Wear");
+        //getSupportActionBar().setTitle("What to Wear");
 
         image1 = (ImageView)findViewById(R.id.imageView12);
         image2 = (ImageView)findViewById(R.id.imageView13);
