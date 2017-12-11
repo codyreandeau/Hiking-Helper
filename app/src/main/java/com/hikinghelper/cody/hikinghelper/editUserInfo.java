@@ -45,6 +45,7 @@ public class editUserInfo extends AppCompatActivity {
     private Bitmap bitmap1;
     private RequestQueue requestQueue;
     private static final String URL = "https://hikinghelper.000webhostapp.com/connect/update_user_info.php";
+    private static final String URL2 = "https://hikinghelper.000webhostapp.com/connect/update_no_photo.php";
     private StringRequest request;
 
     private SharedPreferences mPreferences;
@@ -96,7 +97,7 @@ public class editUserInfo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                mountainResponse();
+                updateInfo();
 
                 //Pass data to user profile page
                 Intent intent = new Intent(editUserInfo.this, User.class);
@@ -151,6 +152,7 @@ public class editUserInfo extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                imageChanged = true;
                 Intent intent1 = new Intent();
                 intent1.setType("image/*");
                 intent1.setAction(Intent.ACTION_GET_CONTENT);
@@ -169,7 +171,6 @@ public class editUserInfo extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 image.setImageURI(imageUri);
-                imageChanged = true;
         }
     }
 
@@ -193,58 +194,94 @@ public class editUserInfo extends AppCompatActivity {
         return encode;
     }
 
-    private void mountainResponse() {
+    private void updateInfo() {
 
         requestQueue = Volley.newRequestQueue(this);
 
         SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         final String uname = mPreferences.getString(getString(R.string.username_save), "");
 
-        //Validate user in the database
-        request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
+        if (imageChanged == true) {
+            request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    try {
 
-                    JSONObject jsonObject = new JSONObject(response);
-                    if(jsonObject.names().get(0).equals("success")){
-                        Toast.makeText(getApplicationContext(),"SUCCESS "+jsonObject.getString("success"),Toast.LENGTH_SHORT).show();
-                    }else {
-                        Toast.makeText(getApplicationContext(), "Error " +jsonObject.getString("error"), Toast.LENGTH_SHORT).show();
+                        JSONObject jsonObject = new JSONObject(response);
+                        if (jsonObject.names().get(0).equals("success")) {
+                            Toast.makeText(getApplicationContext(), "SUCCESS " + jsonObject.getString("success"), Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Error " + jsonObject.getString("error"), Toast.LENGTH_SHORT).show();
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        Toast.makeText(getApplicationContext(), "Something went wrong.", Toast.LENGTH_SHORT).show();
                     }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Toast.makeText(getApplicationContext(), "Something went wrong.", Toast.LENGTH_SHORT).show();
                 }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                String name = UUID.randomUUID().toString();
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    error.printStackTrace();
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    String name = UUID.randomUUID().toString();
 
-                if(imageChanged == true) {
                     mEditor.putString("com.hikinghelper.cody.hikinghelper.imagepath", "https://hikinghelper.000webhostapp.com/connect/images/" + name + ".png");
                     mEditor.commit();
-                }
 
-                String image = getStringImage(bitmap1);
-                HashMap<String, String> hashMap = new HashMap<String, String>();
-                hashMap.put("first_name", firstName.getText().toString());
-                hashMap.put("age", age.getText().toString());
-                hashMap.put("experience", experience.getText().toString());
-                hashMap.put("about_me", aboutMe.getText().toString());
-                hashMap.put("username", uname);
-                hashMap.put("image_name", name);
-                hashMap.put("image_path", image);
-                return hashMap;
-            }
-        };
-        requestQueue.add(request);
+                    String image = getStringImage(bitmap1);
+                    HashMap<String, String> hashMap = new HashMap<String, String>();
+                    hashMap.put("first_name", firstName.getText().toString());
+                    hashMap.put("age", age.getText().toString());
+                    hashMap.put("experience", experience.getText().toString());
+                    hashMap.put("about_me", aboutMe.getText().toString());
+                    hashMap.put("username", uname);
+                    hashMap.put("image_name", name);
+                    hashMap.put("image_path", image);
+                    return hashMap;
+                }
+            };
+            requestQueue.add(request);
+        } else if (imageChanged == false){
+            request = new StringRequest(Request.Method.POST, URL2, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    try {
+
+                        JSONObject jsonObject = new JSONObject(response);
+                        if (jsonObject.names().get(0).equals("success")) {
+                            Toast.makeText(getApplicationContext(), "SUCCESS " + jsonObject.getString("success"), Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Error " + jsonObject.getString("error"), Toast.LENGTH_SHORT).show();
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        Toast.makeText(getApplicationContext(), "Something went wrong.", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    error.printStackTrace();
+                    Toast.makeText(getApplicationContext(), "Something went wrong.", Toast.LENGTH_SHORT).show();
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    HashMap<String, String> hashMap = new HashMap<String, String>();
+                    hashMap.put("first_name", firstName.getText().toString());
+                    hashMap.put("age", age.getText().toString());
+                    hashMap.put("experience", experience.getText().toString());
+                    hashMap.put("about_me", aboutMe.getText().toString());
+                    hashMap.put("username", uname);
+                    return hashMap;
+                }
+            };
+            requestQueue.add(request);
+        }
     }
 }

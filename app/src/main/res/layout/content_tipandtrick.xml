@@ -29,8 +29,7 @@
             <ImageView
                 android:id="@+id/imageView13"
                 android:layout_width="match_parent"
-                android:layout_height="201dp"
-                android:layout_weight="0.00" />
+                android:layout_height="201dp" />
 
             <TextView
                 android:id="@+id/textView14"
@@ -52,8 +51,7 @@
             <ImageView
                 android:id="@+id/imageView11"
                 android:layout_width="389dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.31" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/textView12"
